@@ -121,6 +121,6 @@ def filter_dataframe(df: pd.DataFrame) -> pd.DataFrame:
 
     return df
 
-st.dataframe(filter_dataframe(df), use_container_width = True)
+st.dataframe(filter_dataframe(df))
 
 
