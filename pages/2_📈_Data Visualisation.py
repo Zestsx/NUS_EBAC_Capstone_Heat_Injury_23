@@ -87,12 +87,12 @@ variables_corrplot = [
 #     'Av. Humidity %'
 ]
 
-df_cph = df.copy()
-df_cph = df_cph[variables_corrplot]
+#df_cph = df.copy()
+#df_cph = df_cph[variables_corrplot]
 #df_cph.columns
 
 # calculate correlation matrix
-corr_matrix = df_cph.corr()
+#corr_matrix = df_cph.corr()
 
 st.subheader('**Exploratory Data Visualisation**')
 # A brief description
