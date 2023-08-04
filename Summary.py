@@ -18,7 +18,7 @@ st.set_page_config(page_title=apptitle, page_icon='random', layout= 'wide', init
 
 #Where your image is 
 image = Image.open('Wearable2.jpg')
-#st.image(image, width=450)
+st.image(image, width=450)
 
 
 st.subheader('**Project Summary**')
