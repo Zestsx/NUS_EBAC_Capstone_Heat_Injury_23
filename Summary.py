@@ -17,7 +17,7 @@ st.set_page_config(page_title=apptitle, page_icon='random', layout= 'wide', init
 # random icons in the browser tab
 
 #Where your image is 
-#image = Image.open(r'C:\Users\User\OneDrive\Desktop\NUS EBAC\Capstone\Streamlit\Wearable2.jpg')
+image = Image.open('Wearable2.jpg')
 #st.image(image, width=450)
 
 
