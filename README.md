@@ -1,1 +1,9 @@
-# NUS_EBAC_Capstone_Heat_Injury_23
+streamlit
+scikit-learn
+pandas
+altair
+seaborn
+matplotlib
+numpy
+plotly.express
+PIL
