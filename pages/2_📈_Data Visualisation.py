@@ -3,12 +3,6 @@ import pandas as pd
 import altair as alt
 
 #Import relevant packages
-from urllib.error import URLError
-from sklearn.model_selection import train_test_split, KFold
-from sklearn.preprocessing import OneHotEncoder
-from lifelines import CoxPHFitter
-from lifelines.utils import k_fold_cross_validation
-from lifelines import KaplanMeierFitter
 import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
