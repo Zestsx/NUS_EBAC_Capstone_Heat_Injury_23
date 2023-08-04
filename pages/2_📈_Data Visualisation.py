@@ -142,7 +142,7 @@ st.write('*Weight Breakdown*')
 st.write("---") 
 
 # Create a gender pie chart using plotly
-gender_counts = df['Gender'].value_counts().sort_index()
+gender_counts = df['Gender'].value_counts().reset_index()
 gender_counts.columns = ['Gender', 'Count']
 fig_gender = px.pie(gender_counts, values='Count', names='Gender')
 st.plotly_chart(fig_gender)
