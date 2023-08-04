@@ -150,8 +150,8 @@ st.write('*Gender*')
 st.write("---")
 
 # create a heatmap of the correlation matrix
-fig, ax = plt.subplots(figsize=(8, 6))
-sns.heatmap(corr_matrix, annot=True, fmt=".2f", cmap="coolwarm", ax=ax)
+#fig, ax = plt.subplots(figsize=(8, 6))
+#sns.heatmap(corr_matrix, annot=True, fmt=".2f", cmap="coolwarm", ax=ax)
 
 # show the plot
 st.write(fig)
