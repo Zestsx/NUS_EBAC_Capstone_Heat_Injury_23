@@ -24,7 +24,7 @@ st.write(
 #Insert code to show dataframe
 
 # Load the dataset into a Pandas dataframe
-df = pd.read_csv(r"C:\Users\User\OneDrive\Desktop\NUS EBAC\Capstone\Streamlit\Survival Analysis v3.csv")
+df = pd.read_csv("Survival Analysis v3.csv")
 
 #rename critical columns
 df = df.rename(columns={"('Time', 'max')": "time_to_event", 'Resting HR': 'resting_hr', 'BP (Systolic)': 'bp_systolic', 'BP (Diastolic)': 'bp_diastolic', 'VO2 (relative)': 'vo2_relative', 'VO2 (absolute)': 'vo2_absolute' , 'BF %':'body_fat_perc'})
