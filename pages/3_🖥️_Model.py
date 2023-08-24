@@ -17,10 +17,10 @@ image = Image.open('Wearable2.jpg')
 st.title('EBAC Capstone Project')
 
 
-st.markdown('## Input Data', unsafe_allow_html=True)
+st.markdown('## Risk Scoring Tool', unsafe_allow_html=True)
 st.info('''
-- Test 1 
-- Test 2
+- This risk scoring tool predicts the likelihood of heat injury based on various indicators shown below
+- Draws on data from 66 pariticpants from a San Diego State Study
 ''')
 
 
