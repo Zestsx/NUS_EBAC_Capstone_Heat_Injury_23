@@ -154,4 +154,3 @@ st.write("---")
 #sns.heatmap(corr_matrix, annot=True, fmt=".2f", cmap="coolwarm", ax=ax)
 
 # show the plot
-st.write(fig)
