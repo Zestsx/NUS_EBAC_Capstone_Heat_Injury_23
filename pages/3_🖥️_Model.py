@@ -1,4 +1,4 @@
-import streamlit as st
+eimport streamlit as st
 from PIL import Image
 # other libs
 
@@ -30,7 +30,7 @@ st.info('''
 
 ######################## section-1 ##################
 # Let's add a sub-title
-st.write('Project Details')
+st.write('Enter information below')
 
 
 # Let's load and display a data set
