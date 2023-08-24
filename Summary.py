@@ -13,7 +13,7 @@ from PIL import Image
 # -- Set page config
 apptitle = 'Capstone Project'
 
-st.set_page_config(page_title=apptitle, page_icon='random', layout= 'wide', initial_sidebar_state="expanded")
+st.set_page_config(page_title=apptitle, page_icon='⌚🌡️', layout= 'wide', initial_sidebar_state="expanded")
 # random icons in the browser tab
 
 #Where your image is 
