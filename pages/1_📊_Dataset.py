@@ -12,7 +12,7 @@ import warnings
 
 warnings.filterwarnings('ignore')
 
-st.set_page_config(page_title="DataSet", page_icon="📊")
+st.set_page_config(page_title="DataSet", page_icon="📊",layout= 'wide', initial_sidebar_state="expanded")
 
 st.markdown("# DataSet")
 st.sidebar.header("DataSet")
