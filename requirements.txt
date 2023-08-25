@@ -2,7 +2,5 @@ streamlit
 statsmodels
 scikit-learn
 pandas
-seaborn
-matplotlib
-matplotlib-inline
 numpy
+TensorFlow-CPU
