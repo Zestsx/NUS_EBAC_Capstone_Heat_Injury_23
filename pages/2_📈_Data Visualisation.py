@@ -41,20 +41,16 @@ df = df.rename(columns={"('Time', 'max')": "time_to_event",
                                     'predicted BT value':'predicted_BT',
                                     'predicted HR value':'predicted_HR'})
 
-#Insert code to show dataframe
-
 # get the number of rows and columns
 num_rows, num_cols = df.shape
 
 #print("Number of rows:", num_rows)
 #print("Number of columns:", num_cols)
 
-
 #st.write('Dataset contains', num_rows, 'rows'
  #   ,'Dataset contains', num_cols, 'columns' )
 
 #st.dataframe(df,use_container_width = True)
-
 
 # define BMI bins or categories based on WHO classification
 bmi_bins = pd.cut(df['BMI'], bins=[0, 25, df['BMI'].max()], labels=['Not overweight', 'Overweight'])
@@ -105,6 +101,8 @@ variables_corrplot = [
 
 df_cph = df.copy()
 df_cph = df_cph[variables_corrplot]
+
+print(df_cph)
 
 # calculate correlation matrix
 corr_matrix = df_cph.corr()
