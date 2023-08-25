@@ -279,9 +279,11 @@ cox_nonpca_features = [col for col in variables_cox_nonpca if col not in columns
 
 result_dict = {}  # Dictionary to store column names as keys and max/min values as values
 
-for column in df_cph.columns:
-    max_value = df_cph[column].max()
-    min_value = df_cph[column].min()
+df_rs = df_cph[cox_nonpca_features]
+
+for column in df_rs.columns:
+    max_value = df_rs[column].max()
+    min_value = df_rs[column].min()
 
     result_dict[column] = {'Max': max_value, 'Min': min_value}
 
