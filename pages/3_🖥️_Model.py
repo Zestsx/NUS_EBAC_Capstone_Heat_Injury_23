@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import OneHotEncoder
-import statsmodels as sm
 from statsmodels.stats.outliers_influence import variance_inflation_factor
 from PIL import Image
 # other libs
