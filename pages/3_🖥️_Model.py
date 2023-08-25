@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+import statsmodels.api as sm
 from sklearn.preprocessing import OneHotEncoder
 from PIL import Image
 # other libs
