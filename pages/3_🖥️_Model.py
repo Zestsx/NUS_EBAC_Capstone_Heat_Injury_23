@@ -273,6 +273,23 @@ columns_to_drop = ['time_to_event', 'Heat Stroke']
 # Create a new list with columns that are not in columns_to_drop
 cox_nonpca_features = [col for col in variables_cox_nonpca if col not in columns_to_drop]
 
+#Get Range of Values for each variable
+
+# Assuming you have a DataFrame called 'df'
+
+result_dict = {}  # Dictionary to store column names as keys and max/min values as values
+
+for column in df_cph.columns:
+    max_value = df_cph[column].max()
+    min_value = df_cph[column].min()
+
+    result_dict[column] = {'Max': max_value, 'Min': min_value}
+
+result_df = pd.DataFrame.from_dict(result_dict, orient='index')
+
+# Display the result DataFrame
+print(result_df)
+
 ######################## section-1 ##################
 # Let's add a sub-title
 
