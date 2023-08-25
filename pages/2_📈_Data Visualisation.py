@@ -57,29 +57,33 @@ num_rows, num_cols = df.shape
 
 
 # define BMI bins or categories based on WHO classification
-# bmi_bins_full = pd.cut(df['BMI'], bins=[0, 18.5, 25, 30, df['BMI'].max()], labels=['Underweight', 'Normal weight', 'Overweight', 'Obese'])
 bmi_bins = pd.cut(df['BMI'], bins=[0, 25, df['BMI'].max()], labels=['Not overweight', 'Overweight'])
 
 # add BMI bins as a new column to the dataframe
 # df['bmi_bins_full'] = bmi_bins_full
-df['bmi_bins'] = bmi_bins
-df['bmi_bins'].value_counts()
+df_nopca['bmi_bins'] = bmi_bins
+df_nopca['bmi_bins'].value_counts()
 
-#Create interaction variables
-df['Age_BMI'] = df['Age'] * df['BMI']
-df['resting_hr_vo2_absolute'] = df['resting_hr'] * df['vo2_absolute']
-df['resting_hr_vo2_relative'] = df['resting_hr'] * df['vo2_relative']
+#Create interaction variable for BP
 df['bp_systolic_diastolic'] = df['bp_systolic'] * df['bp_diastolic']
-df[['Age_BMI', 'resting_hr_vo2_absolute','resting_hr_vo2_relative','bp_systolic_diastolic']].head()
+df['bp_systolic_diastolic'].head()
 
 # one-hot encode categorical variables
 cat_vars = ['Gender','bmi_bins']
 encoder = OneHotEncoder()
 encoded = encoder.fit_transform(df[cat_vars]).toarray()
-encoded_df = pd.DataFrame(encoded, columns=encoder.get_feature_names(cat_vars))
+encoded_df = pd.DataFrame(encoded, columns=encoder.get_feature_names_out(cat_vars))
 
-# combine one-hot encoded variables with df
-df = pd.concat([encoded_df, df], axis=1)
+#avr_temperature and avr_humidity columns has 2 null values each. impute with avr value of column
+# Calculate the average value of avr_temperature column
+average_value_temp = df['avr_temperature'].mean()
+# Impute the average value for NaNs in the column
+df['avr_temperature'].fillna(average_value_temp, inplace=True)
+
+# Calculate the average value of avr_humidity column
+average_value_humidity = df['avr_humidity'].mean()
+# Impute the average value for NaNs in the column
+df['avr_humidity'].fillna(average_value_humidity, inplace=True)
 
 
 #plotting corr matrix
@@ -87,23 +91,28 @@ variables_corrplot = [
     'Age',
     'Gender',
     'Height (m)',
-    'Weight (kg)',
+    'Weight (Kg)',
     'BMI',
     'vo2_relative',
     'vo2_absolute',
     'resting_hr',
     'bp_systolic_diastolic',
     'body_fat_perc',
-#     'Av. Temp',
-#     'Av. Humidity %'
+    'avr_temperature',
+    'avr_humidity',
+    'predicted_BT',
+    'predicted_HR'
 ]
 
-#df_cph = df.copy()
-#df_cph = df_cph[variables_corrplot]
-#df_cph.columns
-
 # calculate correlation matrix
-#corr_matrix = df_cph.corr()
+corr_matrix = df_cph.corr()
+
+# create a heatmap of the correlation matrix
+fig, ax = plt.subplots(figsize=(8, 6))
+sns.heatmap(corr_matrix, annot=True, fmt=".2f", cmap="coolwarm", ax=ax)
+
+# show the plot
+plt.show()
 
 st.subheader('**Exploratory Data Visualisation**')
 # A brief description
