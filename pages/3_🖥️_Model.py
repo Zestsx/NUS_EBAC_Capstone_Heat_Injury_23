@@ -298,7 +298,7 @@ column_names = list(result_df.columns.values)
 column_names
 
 # Perform the left join and merge based on a common key column
-merged_df = sorted_summary.merge(result_df, left_on='coef', right_on=index, how='left')
+merged_df = sorted_summary.merge(result_df, left_on='coef', right_on='index', how='left')
 
 # Display the result DataFrame
 merged_df
