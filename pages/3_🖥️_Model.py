@@ -291,6 +291,12 @@ result_df = pd.DataFrame.from_dict(result_dict, orient='index')
 
 result_df.reset_index(drop=False, inplace=True)
 
+# Get all column names
+column_names = result_df.columns.tolist()
+
+# Print the column names
+column_names
+
 # Perform the left join and merge based on a common key column
 merged_df = sorted_summary.merge(result_df, left_on='coef', right_on=0, how='left')
 
