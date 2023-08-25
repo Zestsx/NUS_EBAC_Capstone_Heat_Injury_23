@@ -144,19 +144,19 @@ variables_nonpca.remove('vo2_absolute')
 # drop value because it is >5
 variables_nonpca.remove('Gender')
 
-compute_vif(df,variables_cox_nonpca).sort_values('VIF', ascending=False)
+compute_vif(df,variables_nonpca).sort_values('VIF', ascending=False)
 
 moreThan5=True
 while moreThan5:
-  val=compute_vif(df,variables_cox_nonpca).sort_values('VIF', ascending=False).head(1)['VIF'].values[0]
+  val=compute_vif(df,variables_nonpca).sort_values('VIF', ascending=False).head(1)['VIF'].values[0]
   if val>5:
-    column=compute_vif(df,variables_cox_nonpca).sort_values('VIF', ascending=False).head(1)['Variable'].values[0]
+    column=compute_vif(df,variables_nonpca).sort_values('VIF', ascending=False).head(1)['Variable'].values[0]
     print("drop column: {}, VIF: {}".format(column,val))
-    variables_cox_nonpca.remove(column)
+    variables_nonpca.remove(column)
   else:
     moreThan5=False
 
-df=df[variables_cox_nonpca]
+df=df[variables_nonpca]
 
 # split data into train and test sets
 train_data, test_data = train_test_split(df, test_size=0.2, random_state=42)
