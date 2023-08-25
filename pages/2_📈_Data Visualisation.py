@@ -135,7 +135,7 @@ st.markdown("- Placeholder")
 df['Height_Category'] = pd.cut(df['Height (m)'], bins=[1.50, 1.60, 1.70, 1.80, 1.90], labels=['150-159', '160-169', '170-179', '180-189'])
 
 # Binning Weight into categories
-#df['Weight_Category'] = pd.cut(df['Weight (kg)'], bins=[50, 60, 70, 80, 90], labels=['50-59', '60-69', '70-79', '80-89'])
+df['Weight_Category'] = pd.cut(df['Weight (Kg)'], bins=[50, 60, 70, 80, 90], labels=['50-59', '60-69', '70-79', '80-89'])
 
 # Visualize Age Category
 age_counts = df['Age_Category'].value_counts().reset_index()
@@ -154,12 +154,12 @@ st.write('*Height Breakdown*')
 st.write("---") 
 
 # Visualize Weight Category
-#weight_counts = df['Weight_Category'].value_counts().reset_index()
-#weight_counts.columns = ['Weight_Category', 'Count']
-#fig_weight = px.bar(weight_counts, x='Weight_Category', y='Count')
-#st.plotly_chart(fig_weight)
-#st.write('*Weight Breakdown*')
-#st.write("---") 
+weight_counts = df['Weight_Category'].value_counts().reset_index()
+weight_counts.columns = ['Weight_Category', 'Count']
+fig_weight = px.bar(weight_counts, x='Weight_Category', y='Count')
+st.plotly_chart(fig_weight)
+st.write('*Weight Breakdown*')
+st.write("---") 
 
 # Create a gender pie chart using plotly
 gender_counts = df['Gender'].value_counts().reset_index()
