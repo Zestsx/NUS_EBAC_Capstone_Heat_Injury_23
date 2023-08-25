@@ -39,7 +39,7 @@ st.info('''
 #@st.cache
 
 #####################
-#Data Prep
+#Data Prep, Modelling
 
 # Load the dataset into a Pandas dataframe
 df_nopca = pd.read_csv("Survival_Analysis v2a.csv")
@@ -265,6 +265,14 @@ sorted_summary = summary.sort_values(by='exp(coef)', ascending=False)
 sorted_summary
 
 #####################
+#Risk Scoring
+
+# List of columns to drop
+columns_to_drop = ['time_to_event', 'Heat Stroke']
+
+# Create a new list with columns that are not in columns_to_drop
+cox_nonpca_features = [col for col in variables_cox_nonpca if col not in columns_to_drop]
+
 ######################## section-1 ##################
 # Let's add a sub-title
 
