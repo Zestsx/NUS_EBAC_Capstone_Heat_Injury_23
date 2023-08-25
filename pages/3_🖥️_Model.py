@@ -91,6 +91,15 @@ average_value_humidity = df['avr_humidity'].mean()
 # Impute the average value for NaNs in the column
 df['avr_humidity'].fillna(average_value_humidity, inplace=True)
 
+def variance_inflation_factor(exog, exog_idx):
+    k_vars = exog.shape[1]
+    exog = np.asarray(exog)
+    x_i = exog[:, exog_idx]
+    mask = np.arange(k_vars) != exog_idx
+    x_noti = exog[:, mask]
+    r_squared_i = OLS(x_i, x_noti).fit().rsquared
+    vif = 1. / (1. - r_squared_i)
+    return vif
 #####################
 #Model
 
