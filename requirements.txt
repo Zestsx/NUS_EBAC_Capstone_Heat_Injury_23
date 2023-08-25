@@ -2,9 +2,7 @@ streamlit
 statsmodels
 scikit-learn
 pandas
-altair
 seaborn
 matplotlib
 matplotlib-inline
-numpy 
-plotly
+numpy
