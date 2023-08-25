@@ -61,8 +61,8 @@ bmi_bins = pd.cut(df['BMI'], bins=[0, 25, df['BMI'].max()], labels=['Not overwei
 
 # add BMI bins as a new column to the dataframe
 # df['bmi_bins_full'] = bmi_bins_full
-df_nopca['bmi_bins'] = bmi_bins
-df_nopca['bmi_bins'].value_counts()
+df['bmi_bins'] = bmi_bins
+df['bmi_bins'].value_counts()
 
 #Create interaction variable for BP
 df['bp_systolic_diastolic'] = df['bp_systolic'] * df['bp_diastolic']
