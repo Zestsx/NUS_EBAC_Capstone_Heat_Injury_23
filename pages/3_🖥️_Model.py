@@ -289,6 +289,12 @@ for column in df_rs.columns:
 
 result_df = pd.DataFrame.from_dict(result_dict, orient='index')
 
+#Left Join Result above
+sorted_summary['coef']
+
+# Perform the left join and merge based on a common key column
+merged_df = sorted_summary['coef'].merge(result_df, left_on=sorted_summary['coef'].index, result_df=True, how='left')
+
 # Display the result DataFrame
 result_df
 
