@@ -7,6 +7,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OneHotEncoder
 from lifelines import *
 from lifelines.utils import k_fold_cross_validation
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 from PIL import Image
 # other libs
