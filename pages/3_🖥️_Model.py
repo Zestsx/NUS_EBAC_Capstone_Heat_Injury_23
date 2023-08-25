@@ -27,7 +27,67 @@ st.info('''
 #Caching the model for faster loading
 #@st.cache
 
+#####################
+#Data Prep
 
+# Load the dataset into a Pandas dataframe
+df = pd.read_csv("Survival_Analysis v2a.csv")
+
+#rename critical columns
+df = df.rename(columns={"('Time', 'max')": "time_to_event",
+                        'Resting HR': 'resting_hr',
+                        'BP (Systolic)': 'bp_systolic',
+                        'BP (Diastolic)': 'bp_diastolic',
+                        'VO2 (relative)': 'vo2_relative',
+                        'VO2 (absolute)': 'vo2_absolute' ,
+                        'BF %':'body_fat_perc',
+                        # 'Weight (Kg)':'Weight (kg)',
+                        'Av. Temp': 'avr_temperature',
+                        'Av. Humidity':'avr_humidity',
+                                    'predicted BT value':'predicted_BT',
+                                    'predicted HR value':'predicted_HR'})
+
+# get the number of rows and columns
+num_rows, num_cols = df.shape
+
+#print("Number of rows:", num_rows)
+#print("Number of columns:", num_cols)
+
+#st.write('Dataset contains', num_rows, 'rows'
+ #   ,'Dataset contains', num_cols, 'columns' )
+
+#st.dataframe(df,use_container_width = True)
+
+# define BMI bins or categories based on WHO classification
+bmi_bins = pd.cut(df['BMI'], bins=[0, 25, df['BMI'].max()], labels=['Not overweight', 'Overweight'])
+
+# add BMI bins as a new column to the dataframe
+# df['bmi_bins_full'] = bmi_bins_full
+df['bmi_bins'] = bmi_bins
+df['bmi_bins'].value_counts()
+
+#Create interaction variable for BP
+df['bp_systolic_diastolic'] = df['bp_systolic'] * df['bp_diastolic']
+df['bp_systolic_diastolic'].head()
+
+# one-hot encode categorical variables
+cat_vars = ['Gender','bmi_bins']
+encoder = OneHotEncoder()
+encoded = encoder.fit_transform(df[cat_vars]).toarray()
+encoded_df = pd.DataFrame(encoded, columns=encoder.get_feature_names_out(cat_vars))
+
+#avr_temperature and avr_humidity columns has 2 null values each. impute with avr value of column
+# Calculate the average value of avr_temperature column
+average_value_temp = df['avr_temperature'].mean()
+# Impute the average value for NaNs in the column
+df['avr_temperature'].fillna(average_value_temp, inplace=True)
+
+# Calculate the average value of avr_humidity column
+average_value_humidity = df['avr_humidity'].mean()
+# Impute the average value for NaNs in the column
+df['avr_humidity'].fillna(average_value_humidity, inplace=True)
+
+#####################
 ######################## section-1 ##################
 # Let's add a sub-title
 
