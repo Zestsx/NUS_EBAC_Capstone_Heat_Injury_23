@@ -288,7 +288,7 @@ for column in df_cph.columns:
 result_df = pd.DataFrame.from_dict(result_dict, orient='index')
 
 # Display the result DataFrame
-print(result_df)
+result_df
 
 ######################## section-1 ##################
 # Let's add a sub-title
