@@ -296,7 +296,7 @@ sorted_summary['coef']
 merged_df = sorted_summary['coef'].merge(result_df, left_on=sorted_summary['coef'].index, result_df=True, how='left')
 
 # Display the result DataFrame
-result_df
+merged_df
 
 ######################## section-1 ##################
 # Let's add a sub-title
