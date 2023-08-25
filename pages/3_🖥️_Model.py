@@ -292,7 +292,7 @@ result_df = pd.DataFrame.from_dict(result_dict, orient='index')
 result_df.reset_index(drop=False, inplace=True)
 
 # Get all column names
-column_names = result_df.columns.tolist()
+column_names = list(result_df.columns.values)
 
 # Print the column names
 column_names
