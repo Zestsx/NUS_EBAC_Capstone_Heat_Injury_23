@@ -5,6 +5,9 @@ from statsmodels.stats.outliers_influence import variance_inflation_factor
 from statsmodels.api import OLS
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OneHotEncoder
+from lifelines import *
+from lifelines.utils import k_fold_cross_validation
+
 from PIL import Image
 # other libs
 
