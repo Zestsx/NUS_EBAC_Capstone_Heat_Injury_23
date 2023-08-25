@@ -289,6 +289,9 @@ for column in df_rs.columns:
 
 result_df = pd.DataFrame.from_dict(result_dict, orient='index')
 
+
+sorted_summary.reset_index(drop=False, inplace=True)
+
 result_df.reset_index(drop=False, inplace=True)
 
 # Get all column names
