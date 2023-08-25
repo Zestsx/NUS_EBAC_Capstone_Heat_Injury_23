@@ -1,6 +1,4 @@
 import streamlit as st
-import statsmodels
-from statsmodels.stats.outliers_influence import variance_inflation_factor
 from PIL import Image
 # other libs
 
