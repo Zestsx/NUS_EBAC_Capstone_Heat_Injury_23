@@ -24,7 +24,7 @@ st.write(
 df = pd.read_csv("Survival_Analysis v2a.csv")
 
 #rename critical columns
-df_nopca = df_nopca.rename(columns={"('Time', 'max')": "time_to_event",
+df = df.rename(columns={"('Time', 'max')": "time_to_event",
                         'Resting HR': 'resting_hr',
                         'BP (Systolic)': 'bp_systolic',
                         'BP (Diastolic)': 'bp_diastolic',
