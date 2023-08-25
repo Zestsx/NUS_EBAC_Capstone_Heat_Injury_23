@@ -25,7 +25,7 @@ st.write(
 #Insert code to show dataframe
 
 # Load the dataset into a Pandas dataframe
-df = pd.read_csv("Survival_Analysis v2a.csv.csv")
+df = pd.read_csv("Survival_Analysis v2a.csv")
 
 #rename critical columns
 df = df.rename(columns={"('Time', 'max')": "time_to_event",
