@@ -30,11 +30,9 @@ st.info('''
 
 ######################## section-1 ##################
 # Let's add a sub-title
-st.write('Enter information below')
-
 
 # Let's load and display a data set
-st.subheader('*1. Section 1*')
+st.subheader('*1. Enter information below*')
 
 #df1 = pd.DataFrame()
 
