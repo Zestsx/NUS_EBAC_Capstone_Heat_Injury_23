@@ -289,7 +289,7 @@ for column in df_rs.columns:
 
 result_df = pd.DataFrame.from_dict(result_dict, orient='index')
 
-sorted_summary.set_index(df.columns[0], inplace=True)
+sorted_summary.set_index(sorted_summary.columns[0], inplace=True)
 
 # Perform the left join and merge based on a common key column
 merged_df = sorted_summary.merge(result_df, left_on=sorted_summary['coef'].index, result_df=True, how='left')
