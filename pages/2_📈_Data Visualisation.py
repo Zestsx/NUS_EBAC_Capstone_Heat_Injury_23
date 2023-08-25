@@ -102,17 +102,17 @@ variables_corrplot = [
 df_cph = df.copy()
 df_cph = df_cph[variables_corrplot]
 
-print(df_cph)
+#print(df_cph)
 
 # calculate correlation matrix
-corr_matrix = df_cph.corr()
+#corr_matrix = df_cph.corr()
 
 # create a heatmap of the correlation matrix
-fig, ax = plt.subplots(figsize=(8, 6))
-sns.heatmap(corr_matrix, annot=True, fmt=".2f", cmap="coolwarm", ax=ax)
+#fig, ax = plt.subplots(figsize=(8, 6))
+#sns.heatmap(corr_matrix, annot=True, fmt=".2f", cmap="coolwarm", ax=ax)
 
 # show the plot
-plt.show()
+#plt.show()
 
 st.subheader('**Exploratory Data Visualisation**')
 # A brief description
