@@ -34,8 +34,10 @@ df_nopca = df_nopca.rename(columns={"('Time', 'max')": "time_to_event",
                         # 'Weight (Kg)':'Weight (kg)',
                         'Av. Temp': 'avr_temperature',
                         'Av. Humidity':'avr_humidity',
-                                    'predicted BT value':'predicted_BT',
-                                    'predicted HR value':'predicted_HR'})
+                        'predicted BT value':'predicted_BT',
+                        'predicted HR value':'predicted_HR'})
+
+
 #Insert code to show dataframe
 
 # get the number of rows and columns
