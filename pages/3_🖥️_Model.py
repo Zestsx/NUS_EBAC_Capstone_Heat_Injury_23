@@ -300,10 +300,10 @@ column_names
 column_names_2
 
 # Perform the left join and merge based on a common key column
-#merged_df = sorted_summary.merge(result_df, left_on='coef', right_on='index', how='left')
+merged_df = sorted_summary.merge(result_df, left_on='coef', right_on='index', how='left')
 
 # Display the result DataFrame
-#merged_df
+merged_df
 
 ######################## section-1 ##################
 # Let's add a sub-title
