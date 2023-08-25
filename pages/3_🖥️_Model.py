@@ -197,7 +197,7 @@ sorted_summary = summary.sort_values(by='exp(coef)', ascending=False)
 sorted_summary
 
 #####################
-Risk Score
+#Risk Score
 
 # List of columns to drop
 columns_to_drop = ['time_to_event', 'Heat Stroke']
