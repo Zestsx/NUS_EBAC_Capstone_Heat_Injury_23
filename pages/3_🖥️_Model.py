@@ -298,8 +298,8 @@ result_df.reset_index(drop=False, inplace=True)
 column_names = list(result_df.columns.values)
 column_names_2 = list(sorted_summary .columns.values)
 
-result_df['index'] = df1['index'].astype(str)
-sorted_summary['coef'] = df2['coef'].astype(str)
+result_df['index'] = result_df['index'].astype(str)
+sorted_summary['coef'] = sorted_summary['coef'].astype(str)
 
 # Print the column names
 column_names
