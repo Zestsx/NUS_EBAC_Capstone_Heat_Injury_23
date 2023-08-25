@@ -25,10 +25,21 @@ st.write(
 #Insert code to show dataframe
 
 # Load the dataset into a Pandas dataframe
-df = pd.read_csv("Survival Analysis v3.csv")
+df = pd.read_csv("Survival_Analysis v2a.csv.csv")
 
 #rename critical columns
-df = df.rename(columns={"('Time', 'max')": "time_to_event", 'Resting HR': 'resting_hr', 'BP (Systolic)': 'bp_systolic', 'BP (Diastolic)': 'bp_diastolic', 'VO2 (relative)': 'vo2_relative', 'VO2 (absolute)': 'vo2_absolute' , 'BF %':'body_fat_perc'})
+df_nopca = df_nopca.rename(columns={"('Time', 'max')": "time_to_event",
+                        'Resting HR': 'resting_hr',
+                        'BP (Systolic)': 'bp_systolic',
+                        'BP (Diastolic)': 'bp_diastolic',
+                        'VO2 (relative)': 'vo2_relative',
+                        'VO2 (absolute)': 'vo2_absolute' ,
+                        'BF %':'body_fat_perc',
+                        # 'Weight (Kg)':'Weight (kg)',
+                        'Av. Temp': 'avr_temperature',
+                        'Av. Humidity':'avr_humidity',
+                                    'predicted BT value':'predicted_BT',
+                                    'predicted HR value':'predicted_HR'})
 
 #Insert code to show dataframe
 
