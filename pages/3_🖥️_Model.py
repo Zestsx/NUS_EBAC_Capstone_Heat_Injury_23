@@ -207,7 +207,7 @@ sorted_summary
 columns_to_drop = ['time_to_event', 'Heat Stroke']
 
 # Create a new list with columns that are not in columns_to_drop
-cox_nonpca_features = [col for col in variables_cox_nonpca if col not in columns_to_drop]
+cox_nonpca_features = [col for col in variables_nonpca if col not in columns_to_drop]
 
 cox_nonpca_features
 
@@ -241,7 +241,7 @@ threshold_high = 1.0
 # Assign risk categories to participants
 risk_categories = [assign_risk_category(score) for score in scaled_risk_scores]
 
-# Add risk scores and categories to the original dataset (variables_cox_nonpca)
+# Add risk scores and categories to the original dataset (variables_nonpca)
 df_cph_riskscore["Risk_Score"] = scaled_risk_scores
 df_cph_riskscore["Risk_Category"] = risk_categories
 
