@@ -15,10 +15,10 @@ warnings.filterwarnings('ignore')
 st.set_page_config(page_title="DataSet", page_icon="📊",layout= 'wide', initial_sidebar_state="expanded")
 
 st.markdown("# DataSet")
-st.sidebar.header("DataSet")
-st.write(
-    """Dataset"""
-)
+#st.sidebar.header("DataSet")
+#st.write(
+#    """Dataset"""
+#)
 
 # Load the dataset into a Pandas dataframe
 df = pd.read_csv("Survival_Analysis v2a.csv")
