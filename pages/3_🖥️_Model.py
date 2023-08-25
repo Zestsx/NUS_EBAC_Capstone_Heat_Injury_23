@@ -301,11 +301,15 @@ column_names_2 = list(sorted_summary .columns.values)
 result_df['index'] = result_df['index'].astype(str)
 sorted_summary['coef'] = sorted_summary['coef'].astype(str)
 
+result_df['index']
+
+sorted_summary['coef']
+
 # Print the column names
 column_names
 column_names_2
 
-merged_df = pd.concat([sorted_summary, result_df], axis=1, join='left')
+merged_df = sorted_summary.merge(result_df, left_on='coef', right_on='index')
 
 # Display the result DataFrame
 merged_df
