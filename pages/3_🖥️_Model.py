@@ -309,7 +309,7 @@ sorted_summary['coef']
 column_names
 column_names_2
 
-merged_df = sorted_summary.merge(result_df, left_on='coef', right_on='index')
+merged_df = sorted_summary.merge(result_df, left_on='covariate', right_on='index')
 
 # Display the result DataFrame
 merged_df
