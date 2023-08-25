@@ -144,7 +144,7 @@ variables_nonpca.remove('vo2_absolute')
 # drop value because it is >5
 variables_nonpca.remove('Gender')
 
-compute_vif(df,variables_nonpca).sort_values('VIF', ascending=False)
+#compute_vif(df,variables_nonpca).sort_values('VIF', ascending=False)
 
 moreThan5=True
 while moreThan5:
