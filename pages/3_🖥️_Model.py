@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 from statsmodels.stats.outliers_influence import variance_inflation_factor
 from statsmodels.api import OLS
+from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OneHotEncoder
 from PIL import Image
 # other libs
@@ -119,7 +120,6 @@ temp['Gender'] = temp['Gender'].map({'M':0, 'F':1})
 
 # compute the vif for all given features
 def compute_vif(temp_df,considered_features):
-
     X = temp_df[considered_features]
     # the calculation of variance inflation requires a constant
     X['intercept'] = 1
