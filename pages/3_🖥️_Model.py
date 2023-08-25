@@ -293,15 +293,17 @@ result_df.reset_index(drop=False, inplace=True)
 
 # Get all column names
 column_names = list(result_df.columns.values)
+column_names_2 = list(sorted_summary .columns.values)
 
 # Print the column names
 column_names
+column_names_2
 
 # Perform the left join and merge based on a common key column
-merged_df = sorted_summary.merge(result_df, left_on='coef', right_on='index', how='left')
+#merged_df = sorted_summary.merge(result_df, left_on='coef', right_on='index', how='left')
 
 # Display the result DataFrame
-merged_df
+#merged_df
 
 ######################## section-1 ##################
 # Let's add a sub-title
