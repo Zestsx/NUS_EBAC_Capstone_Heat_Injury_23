@@ -85,7 +85,6 @@ average_value_humidity = df['avr_humidity'].mean()
 # Impute the average value for NaNs in the column
 df['avr_humidity'].fillna(average_value_humidity, inplace=True)
 
-
 #plotting corr matrix
 variables_corrplot = [
     'Age',
@@ -103,6 +102,10 @@ variables_corrplot = [
     'predicted_BT',
     'predicted_HR'
 ]
+
+df_cph = df.copy()
+df_cph = df_cph[variables_corrplot]
+df_cph.columns
 
 # calculate correlation matrix
 corr_matrix = df_cph.corr()
