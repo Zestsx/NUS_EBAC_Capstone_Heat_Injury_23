@@ -328,7 +328,7 @@ with st.form("Input Form"):
     inputs = {}
 
     for index, row in merged_df.iterrows():
-        variable = row['variable']
+        variable = row['covariate']
         min_value = row['min']
         max_value = row['max']
 
