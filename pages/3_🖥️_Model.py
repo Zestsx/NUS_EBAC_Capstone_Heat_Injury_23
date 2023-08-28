@@ -332,8 +332,8 @@ with st.form("Input Form"):
 
     for index, row in merged_df.iterrows():
         variable = row['covariate']
-        min_value = row['min']
-        max_value = row['max']
+        min_value = row['Min']
+        max_value = row['Max']
         P25 = row['P25']
 
         inputs[variable] = st.number_input(f"{variable}:",
