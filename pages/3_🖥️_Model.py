@@ -325,15 +325,15 @@ st.subheader('*1. Enter information below*')
 
 # Create a form with input fields
 with st.form("Input Form"):
-    resting_hr = st.number_input('resting_hr:', min_value=0.1, max_value=100.0, value=1.0)
-    bp_systolic_diastolic = st.number_input('bp_systolic_diastolic:', min_value=0.1, max_value=10.0, value=1.0)
-    Age = st.number_input('Age:', min_value=0.1, max_value=100.0, value=1.0)
-    vo2_relative = st.number_input('vo2_relative:', min_value=0.1, max_value=10.0, value=1.0)
-    Body_Temperature = st.number_input('Body Temperature:', min_value=0.1, max_value=50.0, value=1.0)
-    Heart_Rate = st.number_input('Heart Rate:', min_value=0.1, max_value=200.0, value=1.0)
-    Humidity = st.number_input('Humidity:', min_value=0.1, max_value=200.0, value=1.0)
-    Body_Fat_Percentage = st.number_input('Body Fat Percentage:', min_value=0.1, max_value=200.0, value=1.0)
-    Temperature = st.number_input('Temperature:', min_value=0.1, max_value=200.0, value=1.0)
+    resting_hr = st.number_input('resting_hr:', min_value=0.1, max_value=100.0, value=1.0, key='resting_hr')
+    bp_systolic_diastolic = st.number_input('bp_systolic_diastolic:', min_value=0.1, max_value=10.0, value=1.0, key='bp_systolic_diastolic')
+    Age = st.number_input('Age:', min_value=0.1, max_value=100.0, value=1.0, key='Age')
+    vo2_relative = st.number_input('vo2_relative:', min_value=0.1, max_value=10.0, value=1.0, key='vo2_relative')
+    Body_Temperature = st.number_input('Body Temperature:', min_value=0.1, max_value=50.0, value=1.0, key='Body_Temperature')
+    Heart_Rate = st.number_input('Heart Rate:', min_value=0.1, max_value=200.0, value=1.0, key='Heart_Rate')
+    Humidity = st.number_input('Humidity:', min_value=0.1, max_value=200.0, value=1.0, key='Humidity')
+    Body_Fat_Percentage = st.number_input('Body Fat Percentage:', min_value=0.1, max_value=200.0, value=1.0, key='Body_Fat_Percentage')
+    Temperature = st.number_input('Temperature:', min_value=0.1, max_value=200.0, value=1.0, key='Temperature')
 
     # Create a submit button
     submitted = st.form_submit_button("Submit")
