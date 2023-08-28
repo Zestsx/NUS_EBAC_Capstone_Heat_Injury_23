@@ -345,10 +345,10 @@ if submitted:
 
     for index, row in merged_df.iterrows():
         variable = row['variable']
-        coeff = row['coeff']
+        coef = row['coef']
         input_value = inputs[variable]
 
-        risk_score += coeff * input_value
+        risk_score += coef * input_value
 
     # Display the risk score
     st.write("Risk Score:", risk_score)
