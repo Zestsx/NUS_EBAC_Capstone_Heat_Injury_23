@@ -332,11 +332,12 @@ with st.form("Input Form"):
 
     for index, row in merged_df.iterrows():
         variable = row['covariate']
-        min_value = row['Min']
-        max_value = row['Max']
+        min_value = row['min']
+        max_value = row['max']
+        P25 = row['P25']
 
         inputs[variable] = st.number_input(f"{variable}:",
-                                           value=1.0, key=variable)
+                                           value=P25, key=variable)
 
     # Create a submit button
     submitted = st.form_submit_button("Submit")
@@ -353,7 +354,7 @@ if submitted:
         coef = row['coef']
         input_value = inputs[variable]
 
-        risk_score += coef * input_value
+        risk_score += float(coef) * float(input_value)
 
     # Display the risk score
     st.write("Risk Score:", risk_score)
