@@ -347,7 +347,7 @@ if submitted:
     risk_score = 0.0
 
     for index, row in merged_df.iterrows():
-        variable = row['variable']
+        variable = row['Covariate']
         coef = row['coef']
         input_value = inputs[variable]
 
