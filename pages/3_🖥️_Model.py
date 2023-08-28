@@ -341,16 +341,16 @@ with st.form("Input Form"):
 # Process the form data when the button is clicked
 if submitted:
     # Perform your model calculations using the input values
-    # Replace the following print statements with your model logic
-    print("Resting HR:", resting_hr)
-    print("BP Systolic/Diastolic:", bp_systolic_diastolic)
-    print("Age:", Age)
-    print("VO2 Relative:", vo2_relative)
-    print("Body Temperature:", Body_Temperature)
-    print("Heart Rate:", Heart_Rate)
-    print("Humidity:", Humidity)
-    print("Body Fat Percentage:", Body_Fat_Percentage)
-    print("Temperature:", Temperature)
+    # Replace the following st.write statements with your model logic
+    st.write("Resting HR:", resting_hr)
+    st.write("BP Systolic/Diastolic:", bp_systolic_diastolic)
+    st.write("Age:", Age)
+    st.write("VO2 Relative:", vo2_relative)
+    st.write("Body Temperature:", Body_Temperature)
+    st.write("Heart Rate:", Heart_Rate)
+    st.write("Humidity:", Humidity)
+    st.write("Body Fat Percentage:", Body_Fat_Percentage)
+    st.write("Temperature:", Temperature)
 
 
 #st.dataframe(df1.style.highlight_max(axis=0))
