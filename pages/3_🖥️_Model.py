@@ -341,6 +341,8 @@ with st.form("Input Form"):
     # Create a submit button
     submitted = st.form_submit_button("Submit")
 
+########################## section-2 #####################
+st.subheader('*2. Section 2**')
 # Process the form data when the button is clicked
 if submitted:
     # Calculate risk score using coefficients and input values
@@ -367,17 +369,6 @@ if submitted:
     st.pyplot(fig)
 #st.dataframe(df1.style.highlight_max(axis=0))
 #st.write('source: https://docs.streamlit.io/en/stable/api.html#display-data')
-
-########################## section-2 #####################
-st.subheader('*2. Section 2**')
-#boston = datasets.load_boston()
-#df2 = pd.DataFrame(boston.data, columns=boston.feature_names)
-# st.dataframe(df2)
-
-# let us try some plotting
-#fig, ax = plt.subplots(figsize=(6, 3))
-# sns.boxplot(data=df2)
-# st.pyplot(fig)
 
 
 
