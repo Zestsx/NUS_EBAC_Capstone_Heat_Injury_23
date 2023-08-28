@@ -325,34 +325,43 @@ st.subheader('*1. Enter information below*')
 
 # Create a form with input fields
 with st.form("Input Form"):
-    resting_hr = st.number_input('resting_hr:', min_value=0.1, max_value=100.0, value=1.0, key='resting_hr')
-    bp_systolic_diastolic = st.number_input('bp_systolic_diastolic:', min_value=0.1, max_value=10.0, value=1.0, key='bp_systolic_diastolic')
-    Age = st.number_input('Age:', min_value=0.1, max_value=100.0, value=1.0, key='Age')
-    vo2_relative = st.number_input('vo2_relative:', min_value=0.1, max_value=10.0, value=1.0, key='vo2_relative')
-    Body_Temperature = st.number_input('Body Temperature:', min_value=0.1, max_value=50.0, value=1.0, key='Body_Temperature')
-    Heart_Rate = st.number_input('Heart Rate:', min_value=0.1, max_value=200.0, value=1.0, key='Heart_Rate')
-    Humidity = st.number_input('Humidity:', min_value=0.1, max_value=200.0, value=1.0, key='Humidity')
-    Body_Fat_Percentage = st.number_input('Body Fat Percentage:', min_value=0.1, max_value=200.0, value=1.0, key='Body_Fat_Percentage')
-    Temperature = st.number_input('Temperature:', min_value=0.1, max_value=200.0, value=1.0, key='Temperature')
+    inputs = {}
+
+    for index, row in merged_df.iterrows():
+        variable = row['variable']
+        min_value = row['min']
+        max_value = row['max']
+
+        inputs[variable] = st.number_input(f"{variable}:", min_value=min_value, max_value=max_value,
+                                           value=1.0, key=variable)
 
     # Create a submit button
     submitted = st.form_submit_button("Submit")
 
 # Process the form data when the button is clicked
 if submitted:
-    # Perform your model calculations using the input values
-    # Replace the following st.write statements with your model logic
-    st.write("Resting HR:", resting_hr)
-    st.write("BP Systolic/Diastolic:", bp_systolic_diastolic)
-    st.write("Age:", Age)
-    st.write("VO2 Relative:", vo2_relative)
-    st.write("Body Temperature:", Body_Temperature)
-    st.write("Heart Rate:", Heart_Rate)
-    st.write("Humidity:", Humidity)
-    st.write("Body Fat Percentage:", Body_Fat_Percentage)
-    st.write("Temperature:", Temperature)
+    # Calculate risk score using coefficients and input values
+    risk_score = 0.0
 
+    for index, row in merged_df.iterrows():
+        variable = row['variable']
+        coeff = row['coeff']
+        input_value = inputs[variable]
 
+        risk_score += coeff * input_value
+
+    # Display the risk score
+    st.write("Risk Score:", risk_score)
+
+    # Visualize the risk score as a bar chart
+    fig, ax = plt.subplots()
+    ax.bar("Risk Score", risk_score)
+    ax.set_xlabel("Category")
+    ax.set_ylabel("Risk Score")
+    ax.set_title("Risk Score Visualization")
+
+    # Display the chart in Streamlit
+    st.pyplot(fig)
 #st.dataframe(df1.style.highlight_max(axis=0))
 #st.write('source: https://docs.streamlit.io/en/stable/api.html#display-data')
 
