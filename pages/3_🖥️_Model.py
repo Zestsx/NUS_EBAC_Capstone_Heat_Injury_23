@@ -323,24 +323,34 @@ st.subheader('*1. Enter information below*')
 #df1 = pd.DataFrame()
 
 
-resting_hr = st.number_input('resting_hr:', min_value=0.1, max_value=100.0, value=1.0)
+# Create a form with input fields
+with st.form("Input Form"):
+    resting_hr = st.number_input('resting_hr:', min_value=0.1, max_value=100.0, value=1.0)
+    bp_systolic_diastolic = st.number_input('bp_systolic_diastolic:', min_value=0.1, max_value=10.0, value=1.0)
+    Age = st.number_input('Age:', min_value=0.1, max_value=100.0, value=1.0)
+    vo2_relative = st.number_input('vo2_relative:', min_value=0.1, max_value=10.0, value=1.0)
+    Body_Temperature = st.number_input('Body Temperature:', min_value=0.1, max_value=50.0, value=1.0)
+    Heart_Rate = st.number_input('Heart Rate:', min_value=0.1, max_value=200.0, value=1.0)
+    Humidity = st.number_input('Humidity:', min_value=0.1, max_value=200.0, value=1.0)
+    Body_Fat_Percentage = st.number_input('Body Fat Percentage:', min_value=0.1, max_value=200.0, value=1.0)
+    Temperature = st.number_input('Temperature:', min_value=0.1, max_value=200.0, value=1.0)
 
-bp_systolic_diastolic = st.number_input('bp_systolic_diastolic:', min_value=0.1, max_value=10.0, value=1.0)
+    # Create a submit button
+    submitted = st.form_submit_button("Submit")
 
-Age = st.number_input('Age:', min_value=0.1, max_value=100.0, value=1.0)
-
-vo2_relative = st.number_input('vo2_relative:', min_value=0.1, max_value=10.0, value=1.0)
-
-Body_Temperature = st.number_input('Body Temperature:', min_value=0.1, max_value=50.0, value=1.0)
-
-Heart_Rate  = st.number_input('Heart Rate:', min_value=0.1, max_value=200.0, value=1.0)
-
-Humidity  = st.number_input('Humidity:', min_value=0.1, max_value=200.0, value=1.0)
-
-Body_Fat_Percentage  = st.number_input('Body Fat Percentage:', min_value=0.1, max_value=200.0, value=1.0)
-
-Tempeature  = st.number_input('Body Fat Percentage:', min_value=0.1, max_value=200.0, value=1.0)
-
+# Process the form data when the button is clicked
+if submitted:
+    # Perform your model calculations using the input values
+    # Replace the following print statements with your model logic
+    print("Resting HR:", resting_hr)
+    print("BP Systolic/Diastolic:", bp_systolic_diastolic)
+    print("Age:", Age)
+    print("VO2 Relative:", vo2_relative)
+    print("Body Temperature:", Body_Temperature)
+    print("Heart Rate:", Heart_Rate)
+    print("Humidity:", Humidity)
+    print("Body Fat Percentage:", Body_Fat_Percentage)
+    print("Temperature:", Temperature)
 
 
 #st.dataframe(df1.style.highlight_max(axis=0))
