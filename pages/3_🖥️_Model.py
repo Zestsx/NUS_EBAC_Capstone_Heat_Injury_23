@@ -288,7 +288,7 @@ for column in df_rs.columns:
     pct_50 = df_rs[column].quantile(0.50)
     pct_75 = df_rs[column].quantile(0.75)
 
-    result_dict[column] = {'Max': max_value, 'Min': min_value}
+    result_dict[column] = {'Max': max_value, 'Min': min_value,'P25': pct_25, 'P50': pct_50, 'P75': pct_75 }
 
 result_df = pd.DataFrame.from_dict(result_dict, orient='index')
 
@@ -335,7 +335,7 @@ with st.form("Input Form"):
         min_value = row['Min']
         max_value = row['Max']
 
-        inputs[variable] = st.number_input(f"{variable}:", min_value=min_value, max_value=max_value,
+        inputs[variable] = st.number_input(f"{variable}:",
                                            value=1.0, key=variable)
 
     # Create a submit button
