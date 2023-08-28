@@ -284,6 +284,9 @@ df_rs = df_cph[cox_nonpca_features]
 for column in df_rs.columns:
     max_value = df_rs[column].max()
     min_value = df_rs[column].min()
+    25_pct = df_rs[column].quantile(0.25)
+    50_pct = df_rs[column].quantile(0.50)
+    75_pct = df_rs[column].quantile(0.75)
 
     result_dict[column] = {'Max': max_value, 'Min': min_value}
 
