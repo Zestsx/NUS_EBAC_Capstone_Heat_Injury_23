@@ -286,8 +286,6 @@ df_cph_riskscore = df_cph_vif[cox_nonpca_features]
 #computes linear combination of the predictor variables with their corresponding coefficients and take exponential
 predicted_hazard_ratios = np.exp(np.dot(df_cph_riskscore.values, cph.params_))
 
-df_cph_riskscore.values
-
 # Transform hazard ratios into risk scores (logarithmic transformation)
 risk_scores = np.log(predicted_hazard_ratios)
 
@@ -298,7 +296,7 @@ scaled_risk_scores = 100 * (risk_scores - min_score) / (max_score - min_score)
 
 # Add risk scores to the original dataset (variables_cox_nonpca)
 df_cph_riskscore["Risk_Score"] = scaled_risk_scores
-
+df_cph_riskscore
 #Get Range of Values for each variable
 # Assuming you have a DataFrame called 'df_cph_riskscore '
 result_dict = {}  # Dictionary to store column names as keys and max/min values as values
