@@ -45,51 +45,48 @@ st.info('''
 df_nopca = pd.read_csv("Survival_Analysis v2a.csv")
 
 #rename critical columns
-df_nopca = df_nopca.rename(columns={"('Time', 'max')": "time_to_event",
+df = df.rename(columns={"('Time', 'max')": "time_to_event",
                         'Resting HR': 'resting_hr',
                         'BP (Systolic)': 'bp_systolic',
                         'BP (Diastolic)': 'bp_diastolic',
                         'VO2 (relative)': 'vo2_relative',
                         'VO2 (absolute)': 'vo2_absolute' ,
                         'BF %':'body_fat_perc',
-                        # 'Weight (Kg)':'Weight (kg)',
                         'Av. Temp': 'avr_temperature',
                         'Av. Humidity':'avr_humidity',
-                                    'predicted BT value':'predicted_BT',
-                                    'predicted HR value':'predicted_HR'})
+                        'predicted BT value':'predicted_BT',
+                        'predicted HR value':'predicted_HR'})
 
 # define BMI bins or categories based on WHO classification
-# bmi_bins_full = pd.cut(df['BMI'], bins=[0, 18.5, 25, 30, df['BMI'].max()], labels=['Underweight', 'Normal weight', 'Overweight', 'Obese'])
-bmi_bins = pd.cut(df_nopca['BMI'], bins=[0, 25, df_nopca['BMI'].max()], labels=['Not overweight', 'Overweight'])
+bmi_bins = pd.cut(df['BMI'], bins=[0, 25, df['BMI'].max()], labels=['Not overweight', 'Overweight'])
 
 # add BMI bins as a new column to the dataframe
 # df['bmi_bins_full'] = bmi_bins_full
-df_nopca['bmi_bins'] = bmi_bins
-df_nopca['bmi_bins'].value_counts()
+df['bmi_bins'] = bmi_bins
+df['bmi_bins'].value_counts()
 
 #Create interaction variable for BP
-df_nopca['bp_systolic_diastolic'] = df_nopca['bp_systolic'] * df_nopca['bp_diastolic']
-df_nopca['bp_systolic_diastolic'].head()
+df['bp_systolic_diastolic'] = df['bp_systolic'] * df['bp_diastolic']
+df['bp_systolic_diastolic'].head()
 
 # one-hot encode categorical variables
 cat_vars = ['Gender','bmi_bins']
 encoder = OneHotEncoder()
-encoded = encoder.fit_transform(df_nopca[cat_vars]).toarray()
+encoded = encoder.fit_transform(df[cat_vars]).toarray()
 encoded_df = pd.DataFrame(encoded, columns=encoder.get_feature_names_out(cat_vars))
 
 # combine one-hot encoded variables with df
-df_nopca = pd.concat([encoded_df, df_nopca], axis=1)
+df = pd.concat([encoded_df, df], axis=1)
 
 #avr_temperature and avr_humidity columns has 2 null values each. impute with avr value of column
 # Calculate the average value of avr_temperature column
-average_value_temp = df_nopca['avr_temperature'].mean()
+average_value_temp = df['avr_temperature'].mean()
 # Impute the average value for NaNs in the column
-df_nopca['avr_temperature'].fillna(average_value_temp, inplace=True)
+df['avr_temperature'].fillna(average_value_temp, inplace=True)
 
-# Calculate the average value of avr_humidity column
-average_value_humidity = df_nopca['avr_humidity'].mean()
+average_value_humidity = df['avr_humidity'].mean()
 # Impute the average value for NaNs in the column
-df_nopca['avr_humidity'].fillna(average_value_humidity, inplace=True)
+df['avr_humidity'].fillna(average_value_humidity, inplace=True)
 
 #plotting corr matrix
 variables_corrplot = [
@@ -109,7 +106,7 @@ variables_corrplot = [
     'predicted_HR'
 ]
 
-df_cph = df_nopca.copy()
+df_cph = df.copy()
 df_cph = df_cph[variables_corrplot]
 df_cph.columns
 
@@ -120,8 +117,6 @@ corr_matrix = df_cph.corr()
 fig, ax = plt.subplots(figsize=(8, 6))
 sns.heatmap(corr_matrix, annot=True, fmt=".2f", cmap="coolwarm", ax=ax)
 
-# show the plot
-plt.show()
 
 
 variables_nonpca = [
@@ -141,11 +136,28 @@ variables_nonpca = [
     'predicted_HR'
 ]
 
-temp=df_nopca[variables_nonpca]
-temp.head()
+variables_vif = [
+    'Gender_F',
+    'Gender_M',
+    'bmi_bins_Not overweight',
+    'bmi_bins_Overweight',
+    'Age',
+    'Height (m)',
+    'Weight (Kg)',
+    'vo2_relative',
+    'vo2_absolute',
+    'resting_hr',
+    'bp_systolic_diastolic',
+    'body_fat_perc',
+    'avr_temperature',
+    'avr_humidity',
+    'predicted_BT',
+    'predicted_HR'
+]
 
-# convert category(str) to numerical data
-temp['Gender'] = temp['Gender'].map({'M':0, 'F':1})
+temp=df[variables_vif]
+temp.columns
+
 
 # compute the vif for all given features
 def compute_vif(temp_df,considered_features):
@@ -161,66 +173,60 @@ def compute_vif(temp_df,considered_features):
     vif = vif[vif['Variable']!='intercept']
     return vif
 
-
-compute_vif(temp,variables_nonpca).sort_values('VIF', ascending=False)
-
-# drop value because it is >5
-variables_nonpca.remove('Weight (Kg)')
-
-compute_vif(temp,variables_nonpca).sort_values('VIF', ascending=False)
-
-# drop value because it is >5
-variables_nonpca.remove('vo2_absolute')
-
-compute_vif(temp,variables_nonpca).sort_values('VIF', ascending=False)
-
-# drop value because it is >5
-variables_nonpca.remove('Gender')
-
-compute_vif(temp,variables_nonpca).sort_values('VIF', ascending=False)
-
-variables_cox_nonpca = [
-    'time_to_event',
-    'Heat Stroke',
-    'Age',
-    'Gender_F',
-    'Gender_M',
-    'bmi_bins_Not overweight',
-    'bmi_bins_Overweight',
-    'Height (m)',
-    'Weight (Kg)',
-#     'BMI',
-    'vo2_relative',
-    'vo2_absolute',
-    'resting_hr',
-    'bp_systolic_diastolic',
-    'body_fat_perc',
-    'avr_temperature',
-    'avr_humidity',
-    'predicted_BT',
-    'predicted_HR'
-]
-
-df_cph = df_nopca.copy()
-df_cph = df_cph[variables_cox_nonpca]
-
-
-compute_vif(df_cph,variables_cox_nonpca).sort_values('VIF', ascending=False)
+compute_vif(temp,variables_vif).sort_values('VIF', ascending=False)
 
 moreThan5=True
 while moreThan5:
-  val=compute_vif(df_cph,variables_cox_nonpca).sort_values('VIF', ascending=False).head(1)['VIF'].values[0]
+  val=compute_vif(temp,variables_vif).sort_values('VIF', ascending=False).head(1)['VIF'].values[0]
   if val>5:
-    column=compute_vif(df_cph,variables_cox_nonpca).sort_values('VIF', ascending=False).head(1)['Variable'].values[0]
+    column=compute_vif(temp,variables_vif).sort_values('VIF', ascending=False).head(1)['Variable'].values[0]
     print("drop column: {}, VIF: {}".format(column,val))
-    variables_cox_nonpca.remove(column)
+    variables_vif.remove(column)
   else:
     moreThan5=False
 
-df_cph=df_cph[variables_cox_nonpca]
+compute_vif(temp,variables_vif).sort_values('VIF', ascending=False)
+
+#Manually deciding to drop Height as Height is in BMI
+columns_to_drop = ['Height (m)']
+variables_vif = [col for col in variables_vif if col not in columns_to_drop]
+
+temp = temp[variables_vif]
+
+compute_vif(temp,variables_vif).sort_values('VIF', ascending=False)
+
+###COX###
+
+#use list of finalised variables variables_vif from above after removing VIF >5 for cox model
+variables_cox_nonpca = variables_vif.copy()
+variables_cox_nonpca.append('Heat Stroke')
+variables_cox_nonpca.append('time_to_event')
+print(variables_cox_nonpca)
+
+df_cph_vif = df.copy()
+df_cph_vif = df_cph_vif[variables_cox_nonpca]
+
+from sklearn.utils import resample
+
+## Re-structure dataframe to have 85% non-heatstroke, 15% heatstroke
+# Identify majority and minority classes
+majority_class = df_cph_vif[df_cph_vif['Heat Stroke'] == 0]
+minority_class = df_cph_vif[df_cph_vif['Heat Stroke'] == 1]
+
+# Randomly select 240 rows from the majority class
+n_samples = int((minority_class.shape[0]/0.15)-minority_class.shape[0])
+selected_majority = resample(majority_class, n_samples=n_samples, replace=False, random_state=22)
+
+print("Heatstroke = 0 samples: " + str(selected_majority.shape[0]))
+print("Heatstroke = 1 samples: " + str(minority_class.shape[0]))
+
+df_cph_vif = selected_majority.append(minority_class, ignore_index=True)
+print("Total number of samples: " + str(df_cph_vif.shape[0]))
+
+df_cph_vif
 
 # split data into train and test sets
-train_data, test_data = train_test_split(df_cph, test_size=0.2, random_state=42)
+train_data, test_data = train_test_split(df_cph_vif, test_size=0.2, random_state=42)
 
 #TRAIN
 # create the proportional hazards model
@@ -264,6 +270,8 @@ summary['Significant'] = ['Y' if p < 0.05 else 'N' for p in summary['p']]
 sorted_summary = summary.sort_values(by='exp(coef)', ascending=False)
 sorted_summary
 
+
+
 #####################
 #Risk Scoring
 
@@ -272,14 +280,27 @@ columns_to_drop = ['time_to_event', 'Heat Stroke']
 
 # Create a new list with columns that are not in columns_to_drop
 cox_nonpca_features = [col for col in variables_cox_nonpca if col not in columns_to_drop]
+df_cph_riskscore = df_cph_vif[cox_nonpca_features]
+
+# Calculate predicted hazard ratios for each participant
+#computes linear combination of the predictor variables with their corresponding coefficients and take exponential
+predicted_hazard_ratios = np.exp(np.dot(df_cph_riskscore.values, cph.params_))
+
+# Transform hazard ratios into risk scores (logarithmic transformation)
+risk_scores = np.log(predicted_hazard_ratios)
+
+# Scale risk scores to a specific range (e.g., 0-100)
+min_score = min(risk_scores)
+max_score = max(risk_scores)
+scaled_risk_scores = 100 * (risk_scores - min_score) / (max_score - min_score)
+
+# Add risk scores to the original dataset (variables_cox_nonpca)
+df_cph_riskscore["Risk_Score"] = scaled_risk_scores
 
 #Get Range of Values for each variable
-
-# Assuming you have a DataFrame called 'df'
-
+# Assuming you have a DataFrame called 'df_cph_riskscore '
 result_dict = {}  # Dictionary to store column names as keys and max/min values as values
-
-df_rs = df_cph[cox_nonpca_features]
+df_rs = df_cph_riskscore[cox_nonpca_features]
 
 for column in df_rs.columns:
     max_value = df_rs[column].max()
