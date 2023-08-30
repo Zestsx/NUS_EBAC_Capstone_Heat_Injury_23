@@ -325,18 +325,30 @@ column_names_2 = list(sorted_summary .columns.values)
 result_df['index'] = result_df['index'].astype(str)
 sorted_summary['coef'] = sorted_summary['coef'].astype(str)
 
-result_df['index']
+result_df
 
-sorted_summary['coef']
+predicted_hazard_ratios_participant = np.exp(np.dot(result_df.values, cph.params_))
+
+# Transform hazard ratios into risk scores (logarithmic transformation)
+risk_scores_participant = np.log(predicted_hazard_ratios_participant)
+
+# Scale risk scores to a specific range (e.g., 0-100)
+min_score = min(risk_scores)
+max_score = max(risk_scores)
+scaled_risk_scores = 100 * (risk_scores_participant - min_score) / (max_score - min_score)
+
+scaled_risk_scores
+
+#sorted_summary['coef']
 
 # Print the column names
 column_names
 column_names_2
 
-merged_df = sorted_summary.merge(result_df, left_on='covariate', right_on='index')
+#merged_df = sorted_summary.merge(result_df, left_on='covariate', right_on='index')
 
 # Display the result DataFrame
-merged_df
+#merged_df
 
 ######################## section-1 ##################
 # Let's add a sub-title
