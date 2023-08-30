@@ -286,6 +286,8 @@ df_cph_riskscore = df_cph_vif[cox_nonpca_features]
 #computes linear combination of the predictor variables with their corresponding coefficients and take exponential
 predicted_hazard_ratios = np.exp(np.dot(df_cph_riskscore.values, cph.params_))
 
+df_cph_riskscore.values
+
 # Transform hazard ratios into risk scores (logarithmic transformation)
 risk_scores = np.log(predicted_hazard_ratios)
 
