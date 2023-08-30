@@ -42,7 +42,7 @@ st.info('''
 #Data Prep, Modelling
 
 # Load the dataset into a Pandas dataframe
-df_nopca = pd.read_csv("Survival_Analysis v2a.csv")
+df = pd.read_csv("Survival_Analysis v2a.csv")
 
 #rename critical columns
 df = df.rename(columns={"('Time', 'max')": "time_to_event",
