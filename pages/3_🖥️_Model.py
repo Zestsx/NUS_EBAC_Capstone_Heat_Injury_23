@@ -327,17 +327,17 @@ sorted_summary['coef'] = sorted_summary['coef'].astype(str)
 
 result_df
 
-predicted_hazard_ratios_participant = np.exp(np.dot(result_df.values, cph.params_))
+#predicted_hazard_ratios_participant = np.exp(np.dot(result_df.values, cph.params_))
 
 # Transform hazard ratios into risk scores (logarithmic transformation)
-risk_scores_participant = np.log(predicted_hazard_ratios_participant)
+#risk_scores_participant = np.log(predicted_hazard_ratios_participant)
 
 # Scale risk scores to a specific range (e.g., 0-100)
-min_score = min(risk_scores)
-max_score = max(risk_scores)
-scaled_risk_scores = 100 * (risk_scores_participant - min_score) / (max_score - min_score)
+#min_score = min(risk_scores)
+#max_score = max(risk_scores)
+#scaled_risk_scores = 100 * (risk_scores_participant - min_score) / (max_score - min_score)
 
-scaled_risk_scores
+#scaled_risk_scores
 
 #sorted_summary['coef']
 
