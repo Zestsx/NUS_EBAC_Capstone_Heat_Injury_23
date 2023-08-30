@@ -300,7 +300,7 @@ df_cph_riskscore["Risk_Score"] = scaled_risk_scores
 #Get Range of Values for each variable
 # Assuming you have a DataFrame called 'df_cph_riskscore '
 result_dict = {}  # Dictionary to store column names as keys and max/min values as values
-df_rs = df_cph_riskscore[cox_nonpca_features]
+df_rs = df_cph_riskscore
 
 for column in df_rs.columns:
     max_value = df_rs[column].max()
