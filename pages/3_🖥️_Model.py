@@ -345,7 +345,7 @@ result_df
 column_names
 column_names_2
 
-merged_df = sorted_summary.merge(df_cph_riskscore, left_on='covariate', right_on='index')
+merged_df = df_cph_riskscore.merge(result_df, left_on='covariate', right_on='index')
 
 # Display the result DataFrame
 merged_df
