@@ -402,17 +402,17 @@ if submitted:
     ax.set_ylabel("Risk Score")
     ax.set_title("Risk Score Visualization")
   
-# Plot a histogram of the "Risk_Score" column
-fig, ax = plt.subplots()
-ax.hist(df_cph_riskscore["Risk_Score"], bins=50, edgecolor='white', color='lightblue')
-ax.set_xlabel("Risk Score")
-ax.set_ylabel("Frequency")
-
-# Add an individual line at a specific value (e.g., 75)
-ax.axvline(x=scaled_risk_scores, color='red', linestyle='--', linewidth=2)
-
-# Display the plot using Streamlit
-st.pyplot(fig)
+    # Plot a histogram of the "Risk_Score" column
+    fig, ax = plt.subplots()
+    ax.hist(df_cph_riskscore["Risk_Score"], bins=50, edgecolor='white', color='lightblue')
+    ax.set_xlabel("Risk Score")
+    ax.set_ylabel("Frequency")
+    
+    # Add an individual line at a specific value (e.g., 75)
+    ax.axvline(x=scaled_risk_scores, color='red', linestyle='--', linewidth=2)
+    
+    # Display the plot using Streamlit
+    st.pyplot(fig)
   
 
 
