@@ -392,7 +392,7 @@ if submitted:
         scaled_risk_scores = 100 * (risk_Score - min_score) / (max_score - min_score)
 
     # Display the risk score
-    st.write("Risk Score:", risk_score)
+    st.write("Risk Score:", scaled_risk_scores)
 
     # Visualize the risk score as a bar chart
 
