@@ -389,7 +389,7 @@ if submitted:
 
         risk_score += float(coef) * float(input_value)
         risk_Score =  np.log(np.exp(risk_score))
-        scaled_risk_scores = 100 * (risk_scores_participant - min_score) / (max_score - min_score)
+        scaled_risk_scores = 100 * (risk_Score - min_score) / (max_score - min_score)
 
     # Display the risk score
     st.write("Risk Score:", risk_score)
