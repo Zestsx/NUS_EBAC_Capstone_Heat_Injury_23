@@ -395,16 +395,25 @@ if submitted:
     st.write("Risk Score:", risk_score)
 
     # Visualize the risk score as a bar chart
+
     fig, ax = plt.subplots()
     ax.bar("Risk Score", risk_score)
     ax.set_xlabel("Category")
     ax.set_ylabel("Risk Score")
     ax.set_title("Risk Score Visualization")
+  
+# Plot a histogram of the "Risk_Score" column
+fig, ax = plt.subplots()
+ax.hist(df_cph_riskscore["Risk_Score"], bins=50, edgecolor='white', color='lightblue')
+ax.set_xlabel("Risk Score")
+ax.set_ylabel("Frequency")
 
-    # Display the chart in Streamlit
-    st.pyplot(fig)
-#st.dataframe(df1.style.highlight_max(axis=0))
-#st.write('source: https://docs.streamlit.io/en/stable/api.html#display-data')
+# Add an individual line at a specific value (e.g., 75)
+ax.axvline(x=scaled_risk_scores, color='red', linestyle='--', linewidth=2)
+
+# Display the plot using Streamlit
+st.pyplot(fig)
+  
 
 
 
