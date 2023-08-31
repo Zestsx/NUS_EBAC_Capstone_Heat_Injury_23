@@ -108,7 +108,7 @@ variables_corrplot = [
 
 df_cph = df.copy()
 df_cph = df_cph[variables_corrplot]
-df_cph.columns
+#df_cph.columns
 
 # calculate correlation matrix
 corr_matrix = df_cph.corr()
@@ -156,7 +156,7 @@ variables_vif = [
 ]
 
 temp=df[variables_vif]
-temp.columns
+#temp.columns
 
 
 # compute the vif for all given features
@@ -223,7 +223,7 @@ print("Heatstroke = 1 samples: " + str(minority_class.shape[0]))
 df_cph_vif = selected_majority.append(minority_class, ignore_index=True)
 print("Total number of samples: " + str(df_cph_vif.shape[0]))
 
-df_cph_vif
+#df_cph_vif
 
 # split data into train and test sets
 train_data, test_data = train_test_split(df_cph_vif, test_size=0.2, random_state=42)
@@ -248,7 +248,7 @@ summary = cph.summary
 summary['Significant'] = ['Y' if p < 0.05 else 'N' for p in summary['p']]
 
 sorted_summary = summary.sort_values(by='exp(coef)', ascending=False)
-sorted_summary
+#sorted_summary
 
 cph.check_assumptions(train_data, p_value_threshold=0.05, show_plots=True)
 #Proportional hazard assumption looks okay.
@@ -268,7 +268,7 @@ summary = cph.summary
 summary['Significant'] = ['Y' if p < 0.05 else 'N' for p in summary['p']]
 
 sorted_summary = summary.sort_values(by='exp(coef)', ascending=False)
-sorted_summary
+#sorted_summary
 
 
 
@@ -296,7 +296,7 @@ scaled_risk_scores = 100 * (risk_scores - min_score) / (max_score - min_score)
 
 # Add risk scores to the original dataset (variables_cox_nonpca)
 df_cph_riskscore["Risk_Score"] = scaled_risk_scores
-df_cph_riskscore
+#df_cph_riskscore
 #Get Range of Values for each variable
 # Assuming you have a DataFrame called 'df_cph_riskscore '
 result_dict = {}  # Dictionary to store column names as keys and max/min values as values
@@ -325,7 +325,7 @@ column_names_2 = list(sorted_summary .columns.values)
 result_df['index'] = result_df['index'].astype(str)
 sorted_summary['coef'] = sorted_summary['coef'].astype(str)
 
-result_df
+#result_df
 
 #predicted_hazard_ratios_participant = np.exp(np.dot(result_df.values, cph.params_))
 
@@ -342,13 +342,13 @@ result_df
 #sorted_summary['coef']
 
 # Print the column names
-column_names
-column_names_2
+#column_names
+#column_names_2
 
 merged_df = sorted_summary.merge(result_df, left_on='covariate', right_on='index')
 
 # Display the result DataFrame
-merged_df
+#merged_df
 
 ######################## section-1 ##################
 # Let's add a sub-title
