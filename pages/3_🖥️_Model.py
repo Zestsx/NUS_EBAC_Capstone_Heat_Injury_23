@@ -31,7 +31,7 @@ st.title('EBAC Capstone Project')
 st.markdown('## Risk Scoring Tool', unsafe_allow_html=True)
 st.info('''
 - This risk scoring tool predicts the likelihood of heat injury based on various indicators shown below
-- Draws on data from 66 pariticpants from a San Diego State Study (https://data.mendeley.com/datasets/g5sb382smp/1)
+- Draws on data from 66 participants from a San Diego State Study (https://data.mendeley.com/datasets/g5sb382smp/1)
 ''')
 
 
