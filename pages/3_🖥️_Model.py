@@ -369,28 +369,28 @@ with st.form("Input Form"):
         max_value = row['Max']
         P25 = row['P25']
 
-      if variable == "predicted_BT":
-          variable = "Predicted Body Temperature"
-      elif variable == "bmi_bins_Overweight":
-          variable = "BMI Overweight Indicator"
-      elif variable == "predicted_HR":
-          variable = "Predicted Heart Rate"
-      elif variable == "body_fat_perc":
-          variable = "Body Fat Percentage"
-      elif variable == "resting_hr":
-          variable = "Resting Heart Rate"
-      elif variable == "bp_systolic_diastolic":
-          variable = "BP Systolic Diastolic"
-      elif variable == "avr_temperature":
-          variable = "Average Room Temperature"
-      elif variable == "avr_humidity":
-          variable = "Average Humidity"
-      elif variable == "vo2_relative":
-          variable = "Vo2_Relative"
-      elif variable == "Age":
-          variable = "Age"
-      else:
-          variable = variable
+        if variable == "predicted_BT":
+            variable = "Predicted Body Temperature"
+        elif variable == "bmi_bins_Overweight":
+            variable = "BMI Overweight Indicator"
+        elif variable == "predicted_HR":
+            variable = "Predicted Heart Rate"
+        elif variable == "body_fat_perc":
+            variable = "Body Fat Percentage"
+        elif variable == "resting_hr":
+            variable = "Resting Heart Rate"
+        elif variable == "bp_systolic_diastolic":
+            variable = "BP Systolic Diastolic"
+        elif variable == "avr_temperature":
+            variable = "Average Room Temperature"
+        elif variable == "avr_humidity":
+            variable = "Average Humidity"
+        elif variable == "vo2_relative":
+            variable = "Vo2_Relative"
+        elif variable == "Age":
+            variable = "Age"
+        else:
+            variable = variable
 
         inputs[variable] = st.number_input(f"{variable}:",
                                            value=P25, key=variable)
