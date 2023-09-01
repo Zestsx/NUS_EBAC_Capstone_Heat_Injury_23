@@ -420,7 +420,7 @@ if submitted:
 ########################## section-3 ######################################
 # try to load diabetes dataset and plot histogram for age of patients
 
-st.subheader('*3. Section 3**')
+#st.subheader('*3. Section 3**')
 
 # st.dataframe(df3)
 
