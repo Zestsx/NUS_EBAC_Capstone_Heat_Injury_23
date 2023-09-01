@@ -370,25 +370,25 @@ with st.form("Input Form"):
         P25 = row['P25']
 
       if variable == "predicted_BT":
-          variable = predicted_BT
+          variable = "Predicted Body Temperature"
       elif variable == "bmi_bins_Overweight":
-          variable = bmi_bins_Overweight
+          variable = "BMI Overweight Indicator"
       elif variable == "predicted_HR":
-          variable = predicted_HR
+          variable = "Predicted Heart Rate"
       elif variable == "body_fat_perc":
-          variable = body_fat_perc
+          variable = "Body Fat Percentage"
       elif variable == "resting_hr":
-          variable = resting_hr
+          variable = "Resting Heart Rate"
       elif variable == "bp_systolic_diastolic":
-          variable = bp_systolic_diastolic
+          variable = "BP Systolic Diastolic"
       elif variable == "avr_temperature":
-          variable = avr_temperature
+          variable = "Average Room Temperature"
       elif variable == "avr_humidity":
-          variable = avr_humidity
+          variable = "Average Humidity"
       elif variable == "vo2_relative":
-          variable = vo2_relative
+          variable = "Vo2_Relative"
       elif variable == "Age":
-          variable = Age
+          variable = "Age"
       else:
           variable = variable
 
