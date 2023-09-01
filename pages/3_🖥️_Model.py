@@ -358,6 +358,17 @@ st.subheader('*1. Enter information below*')
 
 #df1 = pd.DataFrame()
 
+# Use Streamlit's CSS utility function to add custom styles
+st.markdown(
+    """
+    <style>
+    .st-eb {
+        max-width: 500px;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
 
 # Create a form with input fields
 with st.form("Input Form"):
