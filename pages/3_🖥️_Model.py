@@ -399,7 +399,7 @@ with st.form("Input Form"):
     submitted = st.form_submit_button("Submit")
 
 ########################## section-2 #####################
-st.subheader('*2. Section 2**')
+st.subheader('*2. Results**')
 # Process the form data when the button is clicked
 if submitted:
     # Calculate risk score using coefficients and input values
