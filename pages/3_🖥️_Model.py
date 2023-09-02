@@ -381,29 +381,29 @@ with st.form("Input Form"):
         P25 = row['P25']
 
         if variable == "predicted_BT":
-            variable = "Predicted Body Temperature"
-        elif variable == "bmi_bins_Overweight":
-            variable = "BMI Overweight Indicator"
+            variable_text = "Predicted Body Temperature"
+        elif variable2 == "bmi_bins_Overweight":
+            variable_text = "BMI Overweight Indicator"
         elif variable == "predicted_HR":
-            variable = "Predicted Heart Rate"
+            variable_text = "Predicted Heart Rate"
         elif variable == "body_fat_perc":
-            variable = "Body Fat Percentage"
+            variable_text = "Body Fat Percentage"
         elif variable == "resting_hr":
-            variable = "Resting Heart Rate"
+            variable_text = "Resting Heart Rate"
         elif variable == "bp_systolic_diastolic":
-            variable = "BP Systolic Diastolic"
+            variable_text = "BP Systolic Diastolic"
         elif variable == "avr_temperature":
-            variable = "Average Room Temperature"
+            variable_text = "Average Room Temperature"
         elif variable == "avr_humidity":
-            variable = "Average Humidity"
+            variable_text = "Average Humidity"
         elif variable == "vo2_relative":
-            variable = "Vo2_Relative"
+            variable_text = "Vo2_Relative"
         elif variable == "Age":
-            variable = "Age"
+            variable_text = "Age"
         else:
-            variable = variable
+            variable_text = variable
 
-        inputs[variable] = st.number_input(f"{variable}:",
+        inputs[variable] = st.number_input(f"{variable_text}:",
                                            value=P25, key=variable)
 
     # Create a submit button
