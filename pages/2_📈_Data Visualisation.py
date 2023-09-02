@@ -44,7 +44,7 @@ df = df.rename(columns={"('Time', 'max')": "time_to_event",
 
 df
 
-df = df[df[min_time] == 0]
+df = df[df['min_time'] == 0]
 
 # get the number of rows and columns
 num_rows, num_cols = df.shape
