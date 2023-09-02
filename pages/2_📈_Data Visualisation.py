@@ -41,6 +41,8 @@ df = df.rename(columns={"('Time', 'max')": "time_to_event",
                                     'predicted BT value':'predicted_BT',
                                     'predicted HR value':'predicted_HR'})
 
+df = df[df[('Time', 'min')] == 'London']
+
 # get the number of rows and columns
 num_rows, num_cols = df.shape
 
