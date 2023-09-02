@@ -380,7 +380,7 @@ with st.form("Input Form"):
         max_value = row['Max']
         P25 = row['P25']
 
-        inputs[variable] = st.number_input(f"{variable_text}:",
+        inputs[variable] = st.number_input(f"{variable}:",
                                            value=P25, key=variable)
 
     # Create a submit button
