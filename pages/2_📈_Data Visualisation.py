@@ -29,6 +29,7 @@ df = pd.read_csv("Survival_Analysis v2a.csv")
 
 #rename critical columns
 df = df.rename(columns={"('Time', 'max')": "time_to_event",
+                        "('Time', 'min')": "min_time",
                         'Resting HR': 'resting_hr',
                         'BP (Systolic)': 'bp_systolic',
                         'BP (Diastolic)': 'bp_diastolic',
@@ -41,7 +42,7 @@ df = df.rename(columns={"('Time', 'max')": "time_to_event",
                                     'predicted BT value':'predicted_BT',
                                     'predicted HR value':'predicted_HR'})
 
-df = df[df[('Time', 'min')] == 0]
+df = df[df[min_time] == 0]
 
 # get the number of rows and columns
 num_rows, num_cols = df.shape
