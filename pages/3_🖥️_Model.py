@@ -383,6 +383,18 @@ with st.form("Input Form"):
         inputs[variable] = st.number_input(f"{variable}:",
                                            value=P25, key=variable, min_value = 0)
 
+    # Define the form fields
+    #predicted_BT = st.number_input("Predicted Body Temperature", min_value=0.0, max_value=100.0, value=merged_df.loc[predicted_BT, P25], step=0.01) df.loc[df[column_name] == value].index[0]
+    #bmi_bins_Overweight = st.number_input("BMI Bins Overweight", min_value=0.0, max_value=1.0, value=merged_df.loc[bmi_bins_Overweight , P25], step=0.01)
+    #predicted_HR = st.number_input("Predicted Heart Rate", min_value=0.0, max_value=200.0, value=merged_df.loc[predicted_HR, P25], step=0.01)
+    #body_fat_perc = st.number_input("Body Fat Percentage", min_value=0.0, max_value=100.0, value=merged_df.loc[body_fat_perc, P25], step=0.01)
+    #resting_hr = st.number_input("Resting HR", min_value=0.0, max_value=200.0, value=merged_df.loc[resting_hr, P25], step=0.01)
+    #bp_systolic_diastolic = st.number_input("BP Systolic/Diastolic", min_value=0.0, max_value=10000.0, value=merged_df.loc[bp_systolic_diastolic, P25], step=0.01)
+    #avr_temperature = st.number_input("Average Temperature", min_value=0.0, max_value=100.0, value=merged_df.loc[avr_temperature, P25], step=0.01)
+    #avr_humidity = st.number_input("Average Humidity", min_value=0.0, max_value=100.0, value=merged_df.loc[avr_humidity, P25], step=0.01)
+    #vo2_relative = st.number_input("VO2 Relative", min_value=0.0, max_value=100.0, value=merged_df.loc[vo2_relative, P25], step=0.01)
+    #age = st.number_input("Age", min_value=0, max_value=150, value=merged_df.loc[age, P25], step=1)
+
     # Create a submit button
     submitted = st.form_submit_button("Submit")
 
