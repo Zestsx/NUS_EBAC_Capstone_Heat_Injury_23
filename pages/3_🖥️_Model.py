@@ -380,29 +380,6 @@ with st.form("Input Form"):
         max_value = row['Max']
         P25 = row['P25']
 
-        if variable == "predicted_BT":
-            variable_text = "Predicted Body Temperature"
-        elif variable2 == "bmi_bins_Overweight":
-            variable_text = "BMI Overweight Indicator"
-        elif variable == "predicted_HR":
-            variable_text = "Predicted Heart Rate"
-        elif variable == "body_fat_perc":
-            variable_text = "Body Fat Percentage"
-        elif variable == "resting_hr":
-            variable_text = "Resting Heart Rate"
-        elif variable == "bp_systolic_diastolic":
-            variable_text = "BP Systolic Diastolic"
-        elif variable == "avr_temperature":
-            variable_text = "Average Room Temperature"
-        elif variable == "avr_humidity":
-            variable_text = "Average Humidity"
-        elif variable == "vo2_relative":
-            variable_text = "Vo2_Relative"
-        elif variable == "Age":
-            variable_text = "Age"
-        else:
-            variable_text = variable
-
         inputs[variable] = st.number_input(f"{variable_text}:",
                                            value=P25, key=variable)
 
