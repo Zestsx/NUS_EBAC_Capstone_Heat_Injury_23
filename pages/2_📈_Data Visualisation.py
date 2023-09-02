@@ -42,6 +42,8 @@ df = df.rename(columns={"('Time', 'max')": "time_to_event",
                                     'predicted BT value':'predicted_BT',
                                     'predicted HR value':'predicted_HR'})
 
+df
+
 df = df[df[min_time] == 0]
 
 # get the number of rows and columns
