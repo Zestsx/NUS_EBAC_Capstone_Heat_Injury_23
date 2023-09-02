@@ -381,7 +381,7 @@ with st.form("Input Form"):
         P25 = row['P25']
 
         inputs[variable] = st.number_input(f"{variable}:",
-                                           value=P25, key=variable)
+                                           value=P25, key=variable, min_value = 0)
 
     # Create a submit button
     submitted = st.form_submit_button("Submit")
