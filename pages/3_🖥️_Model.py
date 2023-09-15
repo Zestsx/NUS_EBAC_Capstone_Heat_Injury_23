@@ -406,6 +406,13 @@ if submitted:
 
     # Visualize the risk score as a bar chart
 
+  # Iterate over the dataframe again to explain each coefficient
+    for index, row in merged_df.iterrows():
+        variable = row['covariate']
+        coef = row['coef']
+        explanation = f"Every 1 unit increase in {variable} would contribute {coef} to the risk score."
+        st.write(explanation)
+
     fig, ax = plt.subplots()
     ax.bar("Risk Score", risk_score)
     ax.set_xlabel("Category")
