@@ -191,7 +191,7 @@ filtered_df = df2[df2['time_to_event'] == df2['max_value_within_partition']]
 filtered_df
 
 # Create a scatter histogram using Plotly Express
-fig_bt_hr = px.scatter(filtered_df, x='predicted_BT', y='predicted_HR',color='Heat Stroke')
+fig_bt_hr = px.scatter(filtered_df, x='predicted_BT', y='predicted_HR',color='Heat Stroke',color_discrete_sequence=["blue", "red"])
 fig_bt_hr.update_layout(
 xaxis_range=[min(filtered_df['predicted_BT']) - 1, max(filtered_df['predicted_BT']) + 1],
 yaxis_range=[min(filtered_df['predicted_HR']) - 5, 200]
