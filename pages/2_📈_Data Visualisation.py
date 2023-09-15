@@ -145,12 +145,32 @@ df['Height_Category'] = pd.cut(df['Height (m)'], bins=[1.50, 1.60, 1.70, 1.80, 1
 df['Weight_Category'] = pd.cut(df['Weight (Kg)'], bins=[50, 60, 70, 80, 90], labels=['50-59', '60-69', '70-79', '80-89'])
 
 # Visualize Age Category
+#age_counts = df['Age_Category'].value_counts().reset_index()
+#age_counts.columns = ['Age_Category', 'Count']
+#fig_age = px.bar(age_counts, x='Age_Category', y='Count')
+#st.plotly_chart(fig_age)
+#st.write('*Age Breakdown*')
+#st.write("---") 
+
+
+# Visualize Age Category
 age_counts = df['Age_Category'].value_counts().reset_index()
 age_counts.columns = ['Age_Category', 'Count']
-fig_age = px.bar(age_counts, x='Age_Category', y='Count')
+
+# Calculate percentages
+total = age_counts['Count'].sum()
+age_counts['Percentage'] = (age_counts['Count'] / total) * 100
+
+# Create the bar chart
+fig_age = px.bar(age_counts, x='Age_Category', y='Count', text='Percentage', labels={'Count': 'Count', 'Age_Category': 'Age Category'}, hover_data=['Percentage'])
+
+# Configure layout
+fig_age.update_traces(texttemplate='%{text:.2f}%', textposition='outside')
+
+# Display the chart and additional information
 st.plotly_chart(fig_age)
 st.write('*Age Breakdown*')
-st.write("---") 
+st.write("---")
 
 # Visualize Height Category
 height_counts = df['Height_Category'].value_counts().reset_index()
