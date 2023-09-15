@@ -193,7 +193,7 @@ filtered_df
 # Create a scatter histogram using Plotly Express
 fig_bt_hr = px.scatter(filtered_df, x='predicted_BT', y='predicted_HR',color='Heat Stroke')
 fig_bt_hr.update_layout(xaxis_range=[min(filtered_df['predicted_BT']) - 1, max(filtered_df['predicted_BT']) + 1],
-                        yaxis_range=[min(filtered_df['predicted_HR']) - 5, 200)
+                        yaxis_range=[min(filtered_df['predicted_HR']) - 5, 200)])
 st.plotly_chart(fig_bt_hr)
 st.write('*Heart Rate & Body Temperature*')
 st.write("---")
