@@ -196,6 +196,10 @@ st.plotly_chart(fig_bt_hr)
 st.write('*Heart Rate & Body Temperature*')
 st.write("---")
 
+# Customize the axis ranges
+fig_bt_hr.update_layout(xaxis_range=[min(filtered_df['predicted_BT']) - 1, max(filtered_df['predicted_BT']) + 1],
+                        yaxis_range=[min(filtered_df['predicted_HR']) - 5, max(filtered_df['predicted_HR']) + 5])
+
 
 
 # create a heatmap of the correlation matrix
