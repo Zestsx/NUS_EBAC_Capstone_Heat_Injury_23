@@ -410,8 +410,9 @@ if submitted:
     for index, row in merged_df.iterrows():
         variable = row['covariate']
         coef = row['coef']
-        explanation = f"Every 1 unit increase in {variable} would contribute {coef} to the risk score."
-        st.write(explanation)
+        coef_formatted = '{:.2f}'.format(coef)  # Format coefficient to 2 decimal places
+        explanation = f"Every 1 unit increase in **{variable}** would contribute **{coef_formatted}** to the risk score."
+        st.markdown(explanation)
 
     fig, ax = plt.subplots()
     ax.bar("Risk Score", risk_score)
