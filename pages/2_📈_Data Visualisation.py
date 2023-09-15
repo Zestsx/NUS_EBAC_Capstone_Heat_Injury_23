@@ -180,6 +180,14 @@ st.plotly_chart(fig_bt_hr)
 st.write('*Heart Rate & Body Temperature*')
 st.write("---")
 
+# Create a partition using Plotly Express
+df['Subject_ID'] = df.groupby('Subject_ID')['('Time', 'max')'].transform(lambda x: x.max())
+
+# Filter the dataframe for rows with the highest value within each partition
+filtered_df = df[df['('Time', 'max')'] == df['max_value_within_partition']]
+
+print(filtered_df)
+
 # create a heatmap of the correlation matrix
 #fig, ax = plt.subplots(figsize=(8, 6))
 #sns.heatmap(corr_matrix, annot=True, fmt=".2f", cmap="coolwarm", ax=ax)
