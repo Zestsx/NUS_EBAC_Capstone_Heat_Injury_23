@@ -174,6 +174,13 @@ st.plotly_chart(fig_gender)
 st.write('*Gender*')
 st.write("---")
 
+# Create a scatter histogram using Plotly Express
+fig_bt_hr = px.scatter(data, x='predicted_BT', y='predicted_HR', marginal_x='histogram', marginal_y='histogram')
+
+st.plotly_chart(fig_bt_hr)
+st.write('*Heart Rate & Body Temperature*')
+st.write("---")
+
 # create a heatmap of the correlation matrix
 #fig, ax = plt.subplots(figsize=(8, 6))
 #sns.heatmap(corr_matrix, annot=True, fmt=".2f", cmap="coolwarm", ax=ax)
