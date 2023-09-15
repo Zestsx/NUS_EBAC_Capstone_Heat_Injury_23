@@ -190,6 +190,18 @@ filtered_df = df2[df2['time_to_event'] == df2['max_value_within_partition']]
 
 filtered_df
 
+# Create a scatter histogram using Plotly Express
+fig_bt_hr = px.scatter(filtered_df, x='predicted_BT', y='predicted_HR',color='Heat Stroke')
+color='color_category'
+st.plotly_chart(fig_bt_hr)
+st.write('*Heart Rate & Body Temperature*')
+st.write("---")
+
+# Customize the color scale
+colorscale = [[0, 'green'], [1, 'red']]
+fig_bt_hr.update_traces(marker=dict(size=12), selector=dict(mode='markers'), marker_colorscale=colorscale)
+
+
 # create a heatmap of the correlation matrix
 #fig, ax = plt.subplots(figsize=(8, 6))
 #sns.heatmap(corr_matrix, annot=True, fmt=".2f", cmap="coolwarm", ax=ax)
