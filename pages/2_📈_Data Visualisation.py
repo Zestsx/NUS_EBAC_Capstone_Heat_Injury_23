@@ -179,7 +179,7 @@ st.write("---")
 # Create a scatter histogram using Plotly Express
 fig_bt_hr = px.scatter(df, x='predicted_BT', y='predicted_HR')
 st.plotly_chart(fig_bt_hr)
-st.write('*Heart Rate & Body Temperature*')
+st.write('*Heart Rate & Body Temperature at T=5*')
 st.write("---")
 
 # Create a partition using Plotly Express
@@ -188,7 +188,7 @@ df2['max_value_within_partition'] = df2.groupby('Subject_ID')['time_to_event'].t
 # Filter the dataframe for rows with the highest value within each partition
 filtered_df = df2[df2['time_to_event'] == df2['max_value_within_partition']]
 
-filtered_df
+filtered_df["Heat Stroke"] = filtered_df["Heat Stroke"].astype(str)
 
 # Create a scatter histogram using Plotly Express
 fig_bt_hr = px.scatter(filtered_df, x='predicted_BT', y='predicted_HR',color='Heat Stroke',color_discrete_sequence=["blue", "red"])
@@ -197,7 +197,7 @@ xaxis_range=[min(filtered_df['predicted_BT']) - 1, max(filtered_df['predicted_BT
 yaxis_range=[min(filtered_df['predicted_HR']) - 5, 200]
 )
 st.plotly_chart(fig_bt_hr)
-st.write('*Heart Rate & Body Temperature*')
+st.write('*Heart Rate & Body Temperature at latest reading*')
 st.write("---")
 
 # Customize the axis ranges
