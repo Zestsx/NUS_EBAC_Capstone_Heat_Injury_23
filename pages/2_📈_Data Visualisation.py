@@ -175,7 +175,7 @@ st.write('*Gender*')
 st.write("---")
 
 # Create a scatter histogram using Plotly Express
-fig_bt_hr = px.scatter(data, x='predicted_BT', y='predicted_HR', marginal_x='histogram', marginal_y='histogram')
+fig_bt_hr = px.scatter(df, x='predicted_BT', y='predicted_HR', marginal_x='histogram', marginal_y='histogram')
 
 st.plotly_chart(fig_bt_hr)
 st.write('*Heart Rate & Body Temperature*')
