@@ -186,7 +186,7 @@ df['max_value_within_partition'] = df.groupby('Subject_ID')['time_to_event'].tra
 # Filter the dataframe for rows with the highest value within each partition
 filtered_df = df[df['time_to_event'] == df['max_value_within_partition']]
 
-print(filtered_df)
+filtered_df
 
 # create a heatmap of the correlation matrix
 #fig, ax = plt.subplots(figsize=(8, 6))
