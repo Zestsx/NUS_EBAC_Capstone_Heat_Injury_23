@@ -181,10 +181,10 @@ st.write('*Heart Rate & Body Temperature*')
 st.write("---")
 
 # Create a partition using Plotly Express
-df['Subject_ID'] = df.groupby('Subject_ID')['('Time', 'max')'].transform(lambda x: x.max())
+df['Subject_ID'] = df.groupby('Subject_ID')['time_to_event'].transform(lambda x: x.max())
 
 # Filter the dataframe for rows with the highest value within each partition
-filtered_df = df[df['('Time', 'max')'] == df['max_value_within_partition']]
+filtered_df = df[df['time_to_event'] == df['max_value_within_partition']]
 
 print(filtered_df)
 
