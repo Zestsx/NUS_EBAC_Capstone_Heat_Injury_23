@@ -410,7 +410,7 @@ if submitted:
     for index, row in merged_df.iterrows():
         variable = row['covariate']
         coef = row['coef']
-        coef_formatted = '{:.2f}'.format(coef)  # Format coefficient to 2 decimal places
+        coef_formatted = coef.round(decimals=2)  # Format coefficient to 2 decimal places
         explanation = f"Every 1 unit increase in **{variable}** would contribute **{coef_formatted}** to the risk score."
         st.write(explanation)
 
