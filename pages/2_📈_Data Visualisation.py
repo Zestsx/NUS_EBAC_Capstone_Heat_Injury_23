@@ -133,8 +133,8 @@ df['Age_Category'] = pd.cut(df['Age'], bins=[0,10,20, 30, 40, 50, 60,70], labels
 #plt.title('Distribution of Age Categories')
 #plt.show()
 
-st.markdown("- Placeholder")
-st.markdown("- Placeholder")
+#st.markdown("- Placeholder")
+#st.markdown("- Placeholder")
 
 # Binning Height into categories
 df['Height_Category'] = pd.cut(df['Height (m)'], bins=[1.50, 1.60, 1.70, 1.80, 1.90], labels=['150-159', '160-169', '170-179', '180-189'])
