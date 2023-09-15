@@ -42,7 +42,7 @@ df = df.rename(columns={"('Time', 'max')": "time_to_event",
                                     'predicted BT value':'predicted_BT',
                                     'predicted HR value':'predicted_HR'})
 
-df
+#df
 
 df2 = df
 
@@ -173,20 +173,39 @@ st.write('*Age Breakdown*')
 st.write("---")
 
 # Visualize Height Category
+#height_counts = df['Height_Category'].value_counts().reset_index()
+#height_counts.columns = ['Height_Category', 'Count']
+#fig_height = px.bar(height_counts, x='Height_Category', y='Count')
+#st.plotly_chart(fig_height)
+#st.write('*Height Breakdown*')
+#st.write("---") 
+
+# Visualize Height Category
 height_counts = df['Height_Category'].value_counts().reset_index()
 height_counts.columns = ['Height_Category', 'Count']
-fig_height = px.bar(height_counts, x='Height_Category', y='Count')
+
+# Calculate percentages
+total = height_counts['Count'].sum()
+height_counts['Percentage'] = (height_counts['Count'] / total) * 100
+
+# Create the bar chart
+fig_height = px.bar(height_counts, x='Height_Category', y='Count', text='Percentage', labels={'Count': 'Count', 'Height_Category': 'Height Category'}, hover_data=['Percentage'])
+
+# Configure layout
+fig_height.update_traces(texttemplate='%{text:.2f}%', textposition='outside')
+
+# Display the chart and additional information
 st.plotly_chart(fig_height)
 st.write('*Height Breakdown*')
-st.write("---") 
+st.write("---")
 
 # Visualize Weight Category
-weight_counts = df['Weight_Category'].value_counts().reset_index()
-weight_counts.columns = ['Weight_Category', 'Count']
-fig_weight = px.bar(weight_counts, x='Weight_Category', y='Count')
-st.plotly_chart(fig_weight)
-st.write('*Weight Breakdown*')
-st.write("---") 
+#weight_counts = df['Weight_Category'].value_counts().reset_index()
+#weight_counts.columns = ['Weight_Category', 'Count']
+#fig_weight = px.bar(weight_counts, x='Weight_Category', y='Count')
+#st.plotly_chart(fig_weight)
+#st.write('*Weight Breakdown*')
+#st.write("---") 
 
 # Create a gender pie chart using plotly
 gender_counts = df['Gender'].value_counts().reset_index()
