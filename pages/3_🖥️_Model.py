@@ -412,7 +412,7 @@ if submitted:
         coef = row['coef']
         coef_formatted = '{:.2f}'.format(coef)  # Format coefficient to 2 decimal places
         explanation = f"Every 1 unit increase in **{variable}** would contribute **{coef_formatted}** to the risk score."
-        st.markdown(explanation)
+        st.write(explanation)
 
     fig, ax = plt.subplots()
     ax.bar("Risk Score", risk_score)
